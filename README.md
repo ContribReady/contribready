@@ -21,24 +21,6 @@ ContribReady is a deterministic CLI that answers: **can a new contributor realis
 
 It audits contributor-facing evidence—setup, testing, contribution workflow, security guidance, and issue specificity—and produces explainable findings, a documented score, and the next fixes to make.
 
-## Workspace
-
-This repository is the main ContribReady source-of-truth repository. Its filesystem parent is only a workspace container, not a Git repository. The workspace contains this repository plus two independently maintained supporting repositories:
-
-```mermaid
-flowchart LR
-  A[Repository files and issue evidence] --> B[contribready-cli]
-  B --> C[@contribready/core]
-  B --> D[GitHub adapter]
-  C --> E[Findings, score, recommendations]
-```
-
-- [`contribready`](https://github.com/ContribReady/contribready): product mission, architecture, roadmap, project state, documentation, release coordination, examples, and integration fixtures.
-- [`contribready-core`](https://github.com/ContribReady/contribready-core): independently reusable deterministic analysis library.
-- [`contribready-cli`](https://github.com/ContribReady/contribready-cli): independently deployable CLI, including local inspection, reporting, and the optional GitHub adapter.
-
-The dependency direction is CLI → Core. The GitHub adapter is a CLI-owned optional integration and is not a separate repository until it has an independently reusable/deployable contract.
-
 ## Start here
 
 | If you want to… | Start with… |
@@ -52,7 +34,7 @@ The dependency direction is CLI → Core. The GitHub adapter is a CLI-owned opti
 
 ## The repository family
 
-ContribReady is one product with three clear ownership boundaries:
+This repository is the product source of truth. The local parent folder is only a navigation container, not a fourth repository. The product has three clear ownership boundaries:
 
 ```mermaid
 flowchart LR
@@ -61,6 +43,10 @@ flowchart LR
   A -. fixtures + contract tests .-> B
   A -. architecture + release coordination .-> C
 ```
+
+- [`contribready`](https://github.com/ContribReady/contribready): product direction, documentation, fixtures, contract tests, and release coordination.
+- [`contribready-cli`](https://github.com/ContribReady/contribready-cli): user-facing command and optional GitHub adapter.
+- [`contribready-core`](https://github.com/ContribReady/contribready-core): reusable analysis engine.
 
 The parent workspace is only a navigation folder. It is not a fourth repository. See the [repository map](docs/REPOSITORY_MAP.md) for the exact boundary decisions.
 
