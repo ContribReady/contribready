@@ -9,6 +9,12 @@
 
 <br />
 
+<div align="center">
+  <a href="https://github.com/ContribReady/contribready/actions/workflows/ci.yml"><img src="https://github.com/ContribReady/contribready/actions/workflows/ci.yml/badge.svg?branch=main" alt="Main repository CI" /></a>
+  <a href="https://github.com/ContribReady/contribready-core"><img src="https://img.shields.io/badge/Core-reusable%20engine-6875f5" alt="Core repository" /></a>
+  <a href="https://github.com/ContribReady/contribready-cli"><img src="https://img.shields.io/badge/CLI-user%20tool-16a085" alt="CLI repository" /></a>
+</div>
+
 # ContribReady
 
 ContribReady is a deterministic CLI that answers: **can a new contributor realistically succeed in this repository?**
@@ -27,9 +33,9 @@ flowchart LR
   C --> E[Findings, score, recommendations]
 ```
 
-- `contribready`: product mission, architecture, roadmap, project state, documentation, release coordination, examples, and integration fixtures.
-- `contribready-core`: independently reusable deterministic analysis library.
-- `contribready-cli`: independently deployable CLI, including local inspection, reporting, and the optional GitHub adapter.
+- [`contribready`](https://github.com/ContribReady/contribready): product mission, architecture, roadmap, project state, documentation, release coordination, examples, and integration fixtures.
+- [`contribready-core`](https://github.com/ContribReady/contribready-core): independently reusable deterministic analysis library.
+- [`contribready-cli`](https://github.com/ContribReady/contribready-cli): independently deployable CLI, including local inspection, reporting, and the optional GitHub adapter.
 
 The dependency direction is CLI → Core. The GitHub adapter is a CLI-owned optional integration and is not a separate repository until it has an independently reusable/deployable contract.
 
@@ -38,8 +44,8 @@ The dependency direction is CLI → Core. The GitHub adapter is a CLI-owned opti
 | If you want to… | Start with… |
 |---|---|
 | Understand the product and architecture | [Documentation map](docs/README.md) · [Architecture](docs/ARCHITECTURE.md) · [Requirements](docs/REQUIREMENTS.md) |
-| Run the CLI | `contribready-cli` locally, or the published CLI after release |
-| Understand the analysis engine | `contribready-core` locally, or the published package after release |
+| Run the CLI | [CLI repository](https://github.com/ContribReady/contribready-cli) · use the published CLI after release |
+| Understand the analysis engine | [Core repository](https://github.com/ContribReady/contribready-core) · use the published package after release |
 | Review safety boundaries | [Security threat model](docs/SECURITY_THREAT_MODEL.md) |
 | See how results are tested | [Fixture catalog](docs/FIXTURE_CATALOG.md) · [Contract tests](tests/contract.test.mjs) |
 | Contribute or propose funded work | [Contributing](CONTRIBUTING.md) · [Grant submission guide](docs/GRANT_SUBMISSION.md) |

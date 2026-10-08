@@ -6,9 +6,9 @@ ContribReady uses one workspace folder for navigation and three independently ma
 
 | Repository | Owns | Does not own |
 |---|---|---|
-| `contribready` | Product mission, requirements, architecture, roadmap, project state, documentation, fixtures, contract tests, release coordination, and grant-facing narrative | The reusable Core implementation or the published CLI package |
-| `contribready-core` | The deterministic, framework-independent analysis library, typed contracts, rules, scoring, recommendations, and Core tests | CLI argument parsing, terminal behavior, GitHub transport, or product-level release coordination |
-| `contribready-cli` | The executable `contribready` command, local filesystem inspection, output formats, exit codes, and the optional GitHub adapter | The Core rule/scoring implementation or the umbrella project's roadmap |
+| [`contribready`](https://github.com/ContribReady/contribready) | Product mission, requirements, architecture, roadmap, project state, documentation, fixtures, contract tests, release coordination, and grant-facing narrative | The reusable Core implementation or the published CLI package |
+| [`contribready-core`](https://github.com/ContribReady/contribready-core) | The deterministic, framework-independent analysis library, typed contracts, rules, scoring, recommendations, and Core tests | CLI argument parsing, terminal behavior, GitHub transport, or product-level release coordination |
+| [`contribready-cli`](https://github.com/ContribReady/contribready-cli) | The executable `contribready` command, local filesystem inspection, output formats, exit codes, and the optional GitHub adapter | The Core rule/scoring implementation or the umbrella project's roadmap |
 
 The dependency direction is:
 
