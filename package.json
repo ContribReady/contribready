@@ -1,0 +1,11 @@
+{
+  "name": "contribready-project",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "lint": "node --check tests/fixtures.test.mjs",
+    "test": "node --test tests/fixtures.test.mjs",
+    "test:contracts": "node --test tests/contract.test.mjs",
+    "verify": "npm run lint && npm test"
+  }
+}

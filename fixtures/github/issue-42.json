@@ -1,0 +1,5 @@
+{
+  "title": "Parser fails on empty input",
+  "body": "Steps to reproduce: run npm test with the empty fixture. Expected behavior is an empty result; actual behavior is an error. Affected module is src/parser. Acceptance criteria and definition of done are documented.",
+  "html_url": "https://github.com/acme/project/issues/42"
+}

@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 300" role="img" aria-labelledby="title desc">
+  <title id="title">ContribReady</title>
+  <desc id="desc">Contributor readiness, made visible.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101827"/><stop offset="1" stop-color="#193b53"/></linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#62e6b5"/><stop offset="1" stop-color="#55a7ff"/></linearGradient>
+  </defs>
+  <rect width="1200" height="300" rx="28" fill="url(#bg)"/>
+  <circle cx="1040" cy="-20" r="260" fill="#55a7ff" opacity=".12"/>
+  <circle cx="1110" cy="285" r="180" fill="#62e6b5" opacity=".10"/>
+  <g fill="none" stroke="url(#accent)" stroke-width="4" opacity=".9">
+    <path d="M850 78h90l55 55h100"/><path d="M850 150h145l45-45h70"/><path d="M850 222h90l50-50h120"/>
+  </g>
+  <g fill="url(#accent)"><circle cx="850" cy="78" r="9"/><circle cx="995" cy="133" r="9"/><circle cx="850" cy="150" r="9"/><circle cx="1110" cy="105" r="9"/><circle cx="850" cy="222" r="9"/><circle cx="990" cy="172" r="9"/></g>
+  <text x="76" y="126" fill="#f4f8fb" font-family="Segoe UI,Arial,sans-serif" font-size="58" font-weight="700">ContribReady</text>
+  <text x="80" y="180" fill="#b8ccda" font-family="Segoe UI,Arial,sans-serif" font-size="25">Contributor readiness, made visible.</text>
+  <text x="80" y="228" fill="#62e6b5" font-family="Segoe UI,Arial,sans-serif" font-size="18" font-weight="600">SAFE  •  DETERMINISTIC  •  EXPLAINABLE</text>
+</svg>

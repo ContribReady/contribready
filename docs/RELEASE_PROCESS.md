@@ -1,0 +1,5 @@
+# Release Process
+
+The main repository coordinates releases and compatibility notes. Core and CLI version and release independently: core is released first when its API changes, and CLI declares its compatible core range. The CLI-owned GitHub adapter ships with the CLI and has no separate release. A release requires independent CI, stable JSON/report contracts, changelog entries, security review, fixture review, and the project release checklist. No remote publication is performed by local development without explicit authorization.
+
+Phase 12 CI runs each repository independently on Ubuntu, Windows, and macOS across Node 20, 22, and 24. Core is verified and packaged before CLI release; CLI consumes the released Core version and packages the CLI-owned GitHub adapter. The main repository runs its fixture gate independently and runs the Core/CLI contract suite only when the sibling repositories are built in the shared workspace. Packaging uses `npm pack --dry-run` before any authorized publication.
