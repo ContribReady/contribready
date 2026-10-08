@@ -17,11 +17,11 @@ Do not submit the parent `ContribReady` workspace folder as a repository. Do not
 
 Drips applications are based on a claimed GitHub repository. Before applying:
 
-1. Publish the three repositories under the maintainer's real GitHub organization or account.
-2. Make the intended default branch and repository history visible and reviewable.
+1. [x] Publish the three repositories under the maintainer's real GitHub organization or account: [main project](https://github.com/ContribReady/contribready), [Core](https://github.com/ContribReady/contribready-core), and [CLI](https://github.com/ContribReady/contribready-cli).
+2. [x] Make the intended default branch and repository history visible and reviewable; all three use `main`.
 3. Use the official Drips claim flow for the primary `contribready` repository.
 4. Complete ownership verification through the claim flow and commit only the real generated `FUNDING.json` required by Drips.
-5. Link Core and CLI in the primary repository and explain their independent roles in the application.
+5. [x] Link Core and CLI in the primary repository and explain their independent roles.
 
 Never add a placeholder wallet address or a hand-written `FUNDING.json` merely to look grant-ready. The file must be generated for the real claimed repository and real funding address through the official process.
 
@@ -42,11 +42,11 @@ This repository does not claim automatic GrantFox eligibility. Confirm the curre
 
 ## Final pre-submission checklist
 
-- [ ] All three repositories are public under the intended maintainer organization.
-- [ ] Maintainer identity, license, contribution, support, and security paths are complete.
-- [ ] Core is published or has a documented release order before CLI publication.
+- [x] All three repositories are public under the intended maintainer organization.
+- [x] License, contribution, support, and security paths are present in all three repositories; confirm named maintainer contacts before applying.
+- [x] Core-before-CLI release order is documented; npm package releases remain pending.
 - [ ] CLI installation and example commands work from a clean checkout.
-- [ ] Main contract tests pass against the checked-out sibling repositories.
-- [ ] No fake URLs, placeholder wallets, secrets, or private local paths remain in tracked files.
+- [x] Main contract tests pass against the checked-out sibling repositories.
+- [x] No fake repository URLs, placeholder wallet, secrets, or private local paths were found in the tracked project files during preparation.
 - [ ] Grant issues are created only after the maintainer authorizes external issue creation.
-- [ ] The application names `contribready` as the primary repository and explains the Core/CLI boundaries.
+- [x] The application guide names `contribready` as the primary repository and explains the Core/CLI boundaries.

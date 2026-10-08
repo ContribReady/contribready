@@ -19,11 +19,13 @@ Updated: 2026-10-08
 - Local audit preparation: complete.
 - Primary submission repository: `contribready`.
 - Supporting repositories: `contribready-core` and `contribready-cli`.
-- External publication, package release, maintainer identity configuration, and grant application: not performed from this workspace.
+- GitHub publication: complete; all three public repositories are under the `ContribReady` organization with `main` as the default branch.
+- CI after publication: passing for all three repositories across Ubuntu, Windows, and macOS with Node.js 20, 22, and 24.
+- npm package publication, Drips repository claim/FUNDING.json setup, and grant applications: not completed.
 - Submission guide: [docs/GRANT_SUBMISSION.md](docs/GRANT_SUBMISSION.md).
 
 ## Repository state
 
-- Main repository: standalone Git repository; owns project-level source of truth and release coordination.
-- Core repository: standalone Git repository; Phase 8 scoring/recommendation contract complete.
-- CLI repository: standalone Git repository; Phase 10 security hardening complete; Phase 11 contract-tested with main fixtures; Phase 12 independently package/CI verified; Phase 13 release-audited; Phase 14 externally audited; Phase 15 SARIF/GitHub metadata complete; owns CLI and optional GitHub adapter.
+- Main repository: [public GitHub repository](https://github.com/ContribReady/contribready); standalone Git repository; owns project-level source of truth and release coordination.
+- Core repository: [public GitHub repository](https://github.com/ContribReady/contribready-core); standalone Git repository; Phase 8 scoring/recommendation contract complete.
+- CLI repository: [public GitHub repository](https://github.com/ContribReady/contribready-cli); standalone Git repository; Phase 10 security hardening complete; Phase 11 contract-tested with main fixtures; Phase 12 independently package/CI verified; Phase 13 release-audited; Phase 14 externally audited; Phase 15 SARIF/GitHub metadata complete; owns CLI and optional GitHub adapter.
