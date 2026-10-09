@@ -3,13 +3,13 @@
 **Audit date:** 2026-10-09
 
 **Scope:** local source, repository boundaries, public GitHub organization/repositories, documentation, package publication, tests, security configuration, and funding-program fit.
-**Method:** read-only baseline inventory and GitHub checks; local static source review; package verification and contract tests; no target repository execution, release, publication, visibility changes, protection changes, or GitHub security-setting changes.
+**Method:** read-only baseline inventory and GitHub checks; local static source review; package verification and contract tests; targeted repository security-setting changes authorized by the follow-up assignment; no target repository execution, release, publication, visibility changes, branch-protection changes, or merge to `main` by this audit.
 
 ## Executive result
 
 ContribReady is a coherent three-repository TypeScript product, not a documentation-only project. The current decomposition is justified: `contribready` owns product direction and coordination; `contribready-core` is the reusable deterministic engine; `contribready-cli` is the user-facing executable and GitHub adapter. The parent `ContribReady/` folder is a navigation container and is not a Git repository. No `contribready-docs` or `contribready-action` repository exists or is justified by the current architecture.
 
-The audit found one confirmed high-impact product defect and corrected it on a Core audit branch: empty issue-template headings were counted as substantive evidence, and failed checks displayed success-oriented messages. A regression test now covers the empty-template case. The CLI README also advertised npm `npx` installation although neither package exists in the public npm registry; its instructions now accurately describe a source checkout. Cross-repository security links and support routes were corrected, and the security docs now disclose the currently disabled private reporting configuration.
+The audit found one confirmed high-impact product defect and corrected it on a Core audit branch: empty issue-template headings were counted as substantive evidence, and failed checks displayed success-oriented messages. A regression test now covers the empty-template case. The CLI README also advertised npm `npx` installation although neither package exists in the public npm registry; its instructions now accurately describe a source checkout. Cross-repository security links and support routes were corrected. On 2026-10-09, private vulnerability reporting, Dependabot security updates, secret scanning, and repository push protection were enabled and API-verified on all three public repositories; focused `SECURITY.md` update PRs now describe the verified private route.
 
 Local verification passed before and after the Core correction: main fixture lint/tests and contract tests; Core tests (9 baseline, 10 after); and CLI tests (18). Package `verify` passed for both packages, including dry-run packaging. This is strong evidence of internal consistency, but it is not an independent penetration test, external audit, production release, or proof of demand/impact.
 
@@ -19,9 +19,9 @@ Local verification passed before and after the Core correction: main fixture lin
 
 | Repository | Purpose | Visibility/default | Baseline `main` commit | Audit work |
 | --- | --- | --- | --- | --- |
-| [`contribready`](https://github.com/ContribReady/contribready) | Main product source of truth, architecture, docs, roadmap, state, release coordination | Public / `main` | `70930af5bfcf5221264a3674eea9668fb5139c03` | `audit/external-readiness-20261009` (report/docs) |
-| [`contribready-core`](https://github.com/ContribReady/contribready-core) | Reusable TypeScript rule/scoring engine | Public / `main` | `c1bcc111e4eb70f8f16f382e615ea70f16c8f803` | `audit/issue-readiness-false-positive-20261009` (`da99c43`) |
-| [`contribready-cli`](https://github.com/ContribReady/contribready-cli) | CLI, bounded local input adapter, optional GitHub API adapter, output | Public / `main` | `ff5f0d7a14657f3fafc4ee6634af43b3ad925697` | `audit/install-and-reporting-docs-20261009` (`5789cab`) |
+| [`contribready`](https://github.com/ContribReady/contribready) | Main product source of truth, architecture, docs, roadmap, state, release coordination | Public / `main` | `75f2df733c9be1415dd749a0bc62c44e6ab49e76` | License PR [#2](https://github.com/ContribReady/contribready/pull/2); remediation report PR [#3](https://github.com/ContribReady/contribready/pull/3) |
+| [`contribready-core`](https://github.com/ContribReady/contribready-core) | Reusable TypeScript rule/scoring engine | Public / `main` | `e2601480d405cc1eabd61232b2b43a84a3ba7c9d` | License PR [#2](https://github.com/ContribReady/contribready-core/pull/2); security guidance PR [#3](https://github.com/ContribReady/contribready-core/pull/3) |
+| [`contribready-cli`](https://github.com/ContribReady/contribready-cli) | CLI, bounded local input adapter, optional GitHub API adapter, output | Public / `main` | `4aab61e3160c0cd215f1d2cc260952b59d0e0bf7` | License PR [#2](https://github.com/ContribReady/contribready-cli/pull/2); security guidance PR [#3](https://github.com/ContribReady/contribready-cli/pull/3) |
 
 At baseline all three local `main` branches matched fetched `origin/main` exactly; worktrees were clean. Each had its own Git root. The parent has no `.git`. A separate private `ContribReady/demo-repository` also exists on GitHub; it has no local checkout and was not included in product remediation. Three expected product repositories are public. No tags/releases or npm publication were found in this audit.
 
@@ -37,11 +37,10 @@ At baseline all three local `main` branches matched fetched `origin/main` exactl
 
 ### Remaining technical/product risks
 
-- **Security reporting is not safely actionable (P1).** GitHub API checks report private vulnerability reporting disabled for all three public product repos. No security contact address is published. The SECURITY files therefore cannot presently deliver on their private-reporting promise. An organization owner should enable GitHub private vulnerability reporting in all three repositories or publish and test an approved private contact route. This was not changed by the audit.
-- **Security rule overclaims what it measures (P1/P2).** `CR-SECURITY-001` passes when a `SECURITY.md` file merely exists; it cannot verify that the channel works or is private. With GitHub reporting disabled, the product’s current rule can score this area as ready when a reporter has no safe route. The report/score should remain qualified until the rule contract is improved and tested; do not treat a passing score as a security certification.
-- **Incomplete MIT license text (P1; owner/legal confirmation needed).** All three repositories’ `LICENSE` files contain a shortened statement naming the MIT License rather than the complete standard MIT grant, conditions, copyright notice, and warranty disclaimer. Package metadata says `MIT`, while GitHub detects the license as `other`. Because correcting a license is a legal/ownership decision, the audit did not rewrite it. Confirm the intended copyright holder and permission, then add the complete approved license consistently to all three repositories and verify GitHub detection.
-- **No branch protections/rulesets (P1/P2).** Read-only GitHub checks found no rulesets and `main` is unprotected on all three repos. Require pull requests, CI, and appropriate review before external collaboration. Not changed.
-- **Dependency/security automation is disabled.** GitHub reports Dependabot security updates and secret scanning disabled on each repo. Evaluate and enable appropriate public-repository protections; do not claim these controls are active yet.
+- **Security settings are enabled; policy-document PRs are pending.** The authenticated admin enabled private vulnerability reporting on all three repositories and read back `enabled: true`. Dependabot alerts were already on; security updates, secret scanning, and repository push protection now report enabled. The API showed zero open Dependabot and secret-scanning alerts at the verification snapshot. `CR-SECURITY-001` still checks only for a `SECURITY.md` file and cannot prove that the route is monitored or a vulnerability is resolved; a passing project score is not a security certification.
+- **Complete MIT text is proposed, not merged.** All three license PR branches now contain the complete standard MIT wording and preserve the requested copyright notice. Core and CLI package metadata declare `MIT`; the private main-project manifest has no SPDX license field. GitHub still reports `NOASSERTION`/Other on `main`; recheck after the PRs merge. Do not describe the `main` branches as corrected before then.
+- **Security policy guidance awaits review.** Private vulnerability reporting, Dependabot alerts and security updates, secret scanning, and push protection are enabled and API-verified on all three repositories. Focused `SECURITY.md` guidance PRs are open; the settings do not prove that reports are monitored or vulnerabilities are resolved.
+- **Complete MIT text is proposed, not merged.** All three license PRs are open with passing automated CI at the time of this report update. GitHub still reports `NOASSERTION`/Other on `main`; recheck after the PRs merge. Do not describe the `main` branches as corrected before then.
 - **Registry release is absent.** Both package names are unpublished. Dry-run packaging succeeds, but independent installation and versioned consumer use are not yet possible. README is now truthful; package publication and release remain separate owner-authorized operations.
 - **Heuristic evidence checks remain deliberately shallow.** Repository rules largely search conventional filenames/keywords and do not determine whether guidance is true, current, reachable, or followed. E.g. a `SUPPORT.md` file alone is not proof of a working support channel; scoring describes indicators only.
 - **Resource accounting and remote response risks.** The CLI’s string-length counters are not byte-accurate for all Unicode content despite byte-limit wording. GitHub JSON has a documented residual risk: parsing occurs before the post-parse size check when `Content-Length` is absent. Neither behavior was silently reclassified as safe; both merit follow-up hardening/tests.
@@ -63,13 +62,13 @@ After Core issue-rule changes:
 - Main `npm run verify` and `npm run test:contracts`: passed (1 fixture test and 4 contract tests; complete issue, vague issue, CLI/Core parity, and GitHub adapter contracts).
 - The first cross-repository run exposed that populated checklist items must continue to count as acceptance evidence; Core was refined to ignore empty labels while recognizing non-empty section content, and all affected suites then passed.
 
-Earlier public CI was recorded as green across Ubuntu, Windows, macOS and Node 20/22/24; this audit did not change or rerun hosted CI. Branch permissions, issue templates, advisories, publishing, and release workflows were not altered.
+Earlier product CI was recorded as green across Ubuntu, Windows, macOS and Node 20/22/24. For this remediation, all automated CI checks on the six license/security-documentation PRs passed at report-update time. No branch-protection configuration, issue templates, publishing, or release workflows were altered.
 
 ## GitHub configuration and organization
 
 The three intended repos are public, owned by `ContribReady`, use `main`, and have Issues enabled. Discussions are disabled. The organization profile currently has no name, description, location, blog, or `.github` profile README. Main repositories have no configured homepage in GitHub metadata. These are presentation improvements, not code architecture defects.
 
-The `main` branches have no protection rules and no repository rulesets. Private vulnerability reporting is disabled. Dependabot security updates and secret scanning are reported disabled. No settings were changed. The local `gh` identity was verified as `Marvelg256`; no credential material was read or reported.
+The three repositories each have an active `Protect main` ruleset (IDs 24795267, 24795398, and 24795367). These remained active after the authorized security-setting changes. Private vulnerability reporting, Dependabot alerts, Dependabot security updates, secret scanning, and repository push protection are enabled and API-verified. Non-provider secret patterns and validity checks remain disabled. The local `gh` identity was verified as `Marvelg256`; no credential material was read or reported. GitHub's detected license remains `NOASSERTION` pending license PR merge.
 
 ## Funding/readiness assessment (not a prediction or endorsement)
 
@@ -79,15 +78,12 @@ The `main` branches have no protection rules and no repository rulesets. Private
 
 ## Prioritized owner actions
 
-1. Enable and test a private security-reporting route on all three repos; update SECURITY pages only after verified.
-2. Confirm license intent/copyright ownership and replace abbreviated LICENSE files with the approved full license.
-3. Add branch protections requiring PR + passing CI; decide review requirements appropriate to team size.
-4. Enable dependency and secret protections appropriate to the organization’s plan; verify alerts/policies after enabling.
-5. Approve and execute a coordinated Core-then-CLI npm release, then test installation from a clean external directory. Keep unpublished status until then.
-6. Conduct and record an unaided external-contributor onboarding test; fix observed friction.
-7. For Drips, identify an active eligible round, claim the product repo, and prepare verifiable impact metrics. For SCF, first validate real Stellar ecosystem need/integration and eligibility. GrantFox funding remains unverified; ask its maintainers directly rather than infer a grant path.
-8. Complete the remaining audit-branch verifications, commits, and PR reviews. Never merge audit branches without maintainer approval.
+1. Review and merge the three complete-license PRs through Protect main; then recheck GitHub license detection.
+2. Review and merge the three SECURITY.md documentation PRs so repository instructions match the verified private disclosure routes.
+3. Approve and execute a coordinated Core-then-CLI npm release, then test installation from a clean external directory. Keep unpublished status until then.
+4. Conduct and record an unaided external-contributor onboarding test; fix observed friction.
+5. For Drips, identify an active eligible round, claim the product repo, and prepare verifiable impact metrics. For SCF, first validate real Stellar ecosystem need/integration and eligibility. GrantFox funding remains unverified; ask its maintainers directly rather than infer a grant path.
 
 ## Audit limits
 
-This is an engineering and configuration review, not legal advice, a penetration test, an independent third-party security certification, a grant eligibility determination, or a guarantee of acceptance/funding. GitHub configuration was inspected read-only. Audit changes are proposed on dedicated branches and are not merged to `main` by this report.
+This is an engineering and configuration review, not legal advice, a penetration test, an independent third-party security certification, a grant eligibility determination, or a guarantee of acceptance/funding. GitHub security settings were changed only as requested; license and documentation code changes remain proposed on dedicated PR branches and are not merged to `main` by this report.
