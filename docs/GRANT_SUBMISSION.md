@@ -40,12 +40,16 @@ GrantFox presents itself as a Web3 collaboration ecosystem where projects publis
 
 This repository does not claim automatic GrantFox eligibility. Confirm the current program, application route, and requirements directly with GrantFox before submission: [GrantFox documentation](https://docs.grantfox.xyz/) and [GrantChain GitHub organization](https://github.com/GrantChain).
 
+Drips is retrospective funding: assemble demonstrable completed impact and apply only when an eligible round is in Registration. A public repository or polished roadmap alone is insufficient; see the [independent audit](../AUDIT_REPORT.md). SCF/GrantFox program eligibility is not established by repository quality. Validate actual ecosystem fit, program criteria, traction, team eligibility, and a credible delivery/budget plan before applying.
+
 ## Final pre-submission checklist
 
 - [x] All three repositories are public under the intended maintainer organization.
-- [x] License, contribution, support, and security paths are present in all three repositories; confirm named maintainer contacts before applying.
+- [ ] Complete approved license text is present and GitHub detects the intended license in all three repositories.
+- [ ] A working private security-reporting route is configured and tested in all three repositories; SECURITY.md files alone do not provide this.
+- [x] Contribution and support policy documents are present; support points to enabled issue trackers.
 - [x] Core-before-CLI release order is documented; npm package releases remain pending.
-- [ ] CLI installation and example commands work from a clean checkout.
+- [ ] CLI source-checkout instructions work from a clean checkout; registry installation must wait until Core and CLI are published.
 - [x] Main contract tests pass against the checked-out sibling repositories.
 - [x] No fake repository URLs, placeholder wallet, secrets, or private local paths were found in the tracked project files during preparation.
 - [ ] Grant issues are created only after the maintainer authorizes external issue creation.

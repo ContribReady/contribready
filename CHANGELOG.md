@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Added an independent organization-wide audit report, corrected submission-readiness claims, documented verified GitHub configuration blockers, and recorded official funding-program fit limits.
+
+## Unreleased
+
 - Established the main source-of-truth repository and justified two-supporting-repository decomposition.
 - Kept GitHub integration inside the CLI until an independent boundary is demonstrated.
 - Completed Phase 2 CLI foundation and documented the Phase 3 evidence-engine follow-up.

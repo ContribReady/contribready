@@ -1,15 +1,15 @@
 # Project State
 
-Updated: 2026-10-08
+Updated: 2026-10-09
 
 - Current phase: Phase 16+ — Long-term Development
 - Phase status: queued
 - Last completed: Phase 15 — v1 Expansion
-- Current objective: derive the next bounded phase from backlog, contributor feedback, ecosystem evidence, and release needs.
+- Current objective: close the independently audited external-readiness blockers before presenting ContribReady as security-reportable or ready for external funding review.
 - Completed work: main source-of-truth repository, two justified supporting repositories, project documentation, architecture, requirements, scoring model, rule catalog, security model, executable roadmap, repository foundations, typed core contracts, seed rules, CLI command parsing, local audit/issue commands, bounded input loading, recursive contributor-evidence discovery, pure path classification, evidence inventories, setup rules, testing/reproduction rules, contribution workflow/review/support rules, local Markdown issue normalization, six issue-readiness rules, weighted scoring, category breakdowns, deterministic recommendations, human/JSON output, structured errors, canonical GitHub URL parsing, bounded GitHub issue/repository retrieval, optional token authentication, stable remote errors, terminal-output sanitization, credential/response/resource limits, redirect refusal, threat-model documentation, excellent/poor/missing/contradictory repository fixtures, complete/vague issue fixtures, mocked GitHub API fixtures, cross-package contract tests, and deterministic core/CLI/main-repository test harnesses.
-- Remaining work: future scope selection, feedback collection, and any separately approved v1/v2 capabilities.
-- Known blockers: none.
-- Known risks: the deadline is short; v0.1 scope must remain static-first and local-first.
+- Remaining work: verified private vulnerability reporting/contact route; owner-approved complete license text; protected main branches; dependency/secret security controls; npm publication and clean-install test; unaided contributor test; funding-specific eligibility and impact evidence; future scope selection.
+- Known blockers: safe vulnerability reporting is not configured; package names are not published; GitHub main branches are unprotected; license files are abbreviated despite MIT metadata; funding eligibility/impact has not been established.
+- Known risks: readiness rules are keyword/file-presence heuristics and do not prove guidance/channel effectiveness; Unicode byte accounting and post-parse GitHub JSON sizing need follow-up; the product has no demonstrated Stellar integration/impact.
 - Next phase: Phase 16+ — Long-term Development.
 - Next action: derive and document the next phase from backlog, contributor feedback, ecosystem evidence, and security review before implementation.
 - Release target: v0.1.0, 2026-10-09 12:00 WAT.
@@ -23,6 +23,7 @@ Updated: 2026-10-08
 - CI after publication: passing for all three repositories across Ubuntu, Windows, and macOS with Node.js 20, 22, and 24.
 - npm package publication, Drips repository claim/FUNDING.json setup, and grant applications: not completed.
 - Submission guide: [docs/GRANT_SUBMISSION.md](docs/GRANT_SUBMISSION.md).
+- Independent audit: [AUDIT_REPORT.md](AUDIT_REPORT.md); remediations are on local audit branches and are not merged to `main`.
 
 ## Repository state
 
