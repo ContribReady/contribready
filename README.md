@@ -58,7 +58,7 @@ Contributor experience is part of project quality. A repository can have working
 
 Static local repository audits and local Markdown issue audits are deterministic, safe, and explainable. No arbitrary repository code, package install script, test suite, network request, or AI judgment is required for the default audit.
 
-See [PROJECT_STATE.md](PROJECT_STATE.md), [ROADMAP.md](ROADMAP.md), and [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md).
+See [PROJECT_STATE.md](PROJECT_STATE.md), [ROADMAP.md](ROADMAP.md), [docs/REQUIREMENTS.md](docs/REQUIREMENTS.md), and the latest [independent audit](AUDIT_REPORT.md).
 
 ## Submission and repository map
 
@@ -66,8 +66,8 @@ For the exact ownership boundaries and local layout, see [docs/REPOSITORY_MAP.md
 
 ## Status
 
-Phase 15 is complete: the core contracts, safe CLI foundation, bounded repository evidence inventory, readiness rules, versioned scoring/recommendations, opt-in GitHub retrieval, abuse-handling controls, representative fixtures, cross-package contract tests, independent CI, package metadata, compatibility targets, release audit, external contributor pathways, SARIF output, expanded ecosystem evidence, and richer GitHub issue metadata are complete. Phase 16+ long-term development is next. See [FINAL_AUDIT.md](FINAL_AUDIT.md), [docs/EXTERNAL_CONTRIBUTOR_AUDIT.md](docs/EXTERNAL_CONTRIBUTOR_AUDIT.md), and [docs/SARIF.md](docs/SARIF.md).
+Phase 15 implementation is complete, but the 2026-10-09 independent audit found external-readiness gaps that must be closed before a public submission claim. See [AUDIT_REPORT.md](AUDIT_REPORT.md) for verified security, licensing, branch-protection, package-publication, and funding findings; [FINAL_AUDIT.md](FINAL_AUDIT.md) remains the v0.1 implementation/release audit.
 
 ## License
 
-The three repositories are independently licensed under MIT for v0.1.
+Package metadata declares MIT, but the audit found that the repository license files contain abbreviated text and GitHub detects them as `other`. License intent and complete approved text must be confirmed before claiming licensing readiness; details are in [AUDIT_REPORT.md](AUDIT_REPORT.md).
