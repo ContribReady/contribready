@@ -70,4 +70,4 @@ Phase 15 implementation is complete, but the 2026-10-09 independent audit found 
 
 ## License
 
-Package metadata declares MIT, but the audit found that the repository license files contain abbreviated text and GitHub detects them as `other`. License intent and complete approved text must be confirmed before claiming licensing readiness; details are in [AUDIT_REPORT.md](AUDIT_REPORT.md).
+The checked-in `LICENSE` identifies MIT; this private project manifest does not declare a package SPDX license. Core and CLI package metadata declare `MIT`. The complete standard MIT text is proposed on dedicated branches for all three repositories. GitHub's detected license will be checked again after those changes are merged; see [AUDIT_REPORT.md](AUDIT_REPORT.md).
