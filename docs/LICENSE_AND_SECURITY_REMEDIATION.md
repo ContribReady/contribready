@@ -43,7 +43,7 @@ Dependabot alerts were already enabled and were not toggled. The other enabled s
 
 Private vulnerability reporting was enabled with GitHub's documented repository API. The main, Core, and CLI `SECURITY.md` instructions are being updated in focused documentation PRs to point to the private **Security → Advisories → Report a vulnerability** path:
 
-- Main report/guidance: [contribready PR #3](https://github.com/ContribReady/contribready/pull/3) (to be opened with this report)
+- Main report/guidance: [contribready PR #3](https://github.com/ContribReady/contribready/pull/3) (open; contains this report)
 - Core guidance: [contribready-core PR #3](https://github.com/ContribReady/contribready-core/pull/3)
 - CLI guidance: [contribready-cli PR #3](https://github.com/ContribReady/contribready-cli/pull/3)
 
@@ -63,4 +63,4 @@ License branches were compared exactly against the required standard MIT wording
 2. Review and merge the three security-policy documentation PRs. The private-reporting settings themselves are already enabled and verified; no test vulnerability was submitted.
 3. Recheck all security settings and Protect main rulesets after merges. Dependabot and secret-alert counts were zero at this audit snapshot; enabling alerts does not imply dependencies are risk-free.
 
-No setting change was rejected or blocked by permissions or plan limitations. CI results for the newly opened PRs should be reviewed before merge.
+No setting change was rejected or blocked by permissions or plan limitations. At the time of this report update, all automated CI checks on the six license and security-documentation PRs passed, and GitHub reported them mergeable with no conflicts. All remain open and unmerged for maintainer review; rerun checks if their heads change.
