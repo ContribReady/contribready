@@ -19,9 +19,9 @@ Local verification passed before and after the Core correction: main fixture lin
 
 | Repository | Purpose | Visibility/default | Baseline `main` commit | Audit work |
 | --- | --- | --- | --- | --- |
-| [`contribready`](https://github.com/ContribReady/contribready) | Main product source of truth, architecture, docs, roadmap, state, release coordination | Public / `main` | `70930af5bfcf5221264a3674eea9668fb5139c03` | Report and project-documentation branch |
-| [`contribready-core`](https://github.com/ContribReady/contribready-core) | Reusable TypeScript rule/scoring engine | Public / `main` | `c1bcc111e4eb70f8f16f382e615ea70f16c8f803` | Issue-evidence false-positive fix + test + docs branch |
-| [`contribready-cli`](https://github.com/ContribReady/contribready-cli) | CLI, bounded local input adapter, optional GitHub API adapter, output | Public / `main` | `ff5f0d7a14657f3fafc4ee6634af43b3ad925697` | Install/support/security documentation branch |
+| [`contribready`](https://github.com/ContribReady/contribready) | Main product source of truth, architecture, docs, roadmap, state, release coordination | Public / `main` | `70930af5bfcf5221264a3674eea9668fb5139c03` | `audit/external-readiness-20261009` (report/docs) |
+| [`contribready-core`](https://github.com/ContribReady/contribready-core) | Reusable TypeScript rule/scoring engine | Public / `main` | `c1bcc111e4eb70f8f16f382e615ea70f16c8f803` | `audit/issue-readiness-false-positive-20261009` (`da99c43`) |
+| [`contribready-cli`](https://github.com/ContribReady/contribready-cli) | CLI, bounded local input adapter, optional GitHub API adapter, output | Public / `main` | `ff5f0d7a14657f3fafc4ee6634af43b3ad925697` | `audit/install-and-reporting-docs-20261009` (`5789cab`) |
 
 At baseline all three local `main` branches matched fetched `origin/main` exactly; worktrees were clean. Each had its own Git root. The parent has no `.git`. A separate private `ContribReady/demo-repository` also exists on GitHub; it has no local checkout and was not included in product remediation. Three expected product repositories are public. No tags/releases or npm publication were found in this audit.
 

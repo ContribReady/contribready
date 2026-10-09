@@ -23,7 +23,7 @@ Updated: 2026-10-09
 - CI after publication: passing for all three repositories across Ubuntu, Windows, and macOS with Node.js 20, 22, and 24.
 - npm package publication, Drips repository claim/FUNDING.json setup, and grant applications: not completed.
 - Submission guide: [docs/GRANT_SUBMISSION.md](docs/GRANT_SUBMISSION.md).
-- Independent audit: [AUDIT_REPORT.md](AUDIT_REPORT.md); remediations are on local audit branches and are not merged to `main`.
+- Independent audit: [AUDIT_REPORT.md](AUDIT_REPORT.md); remediations are on dedicated audit branches and are not merged to `main`.
 
 ## Repository state
 
