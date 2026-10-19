@@ -1,7 +1,7 @@
 # Project State
 
 **Updated:** 2026-10-19
-**Current work:** release-candidate package test and cross-repository evidence integration; Core fix merged, CLI proposal matrix green, main matrix rerunning against the latest CLI proposal head
+**Current work:** release-candidate package test and cross-repository evidence integration; Core fix merged, CLI and coordinated main proposal matrices green, contributor-issue publication deferred until approval
 **Submission status:** improve before Drips Wave; defer GrantFox application pending verified route/fit
 
 ## Product
@@ -23,7 +23,7 @@ ContribReady is a deterministic, local-first contributor-readiness auditor that 
 - CLI `npm run verify` passed locally against the updated Core build (34 passed, 2 symlink-creation tests skipped because this account cannot create those links; package dry-run passed). SARIF success/error outputs pass the vendored OASIS Errata 01 schema tests. A new offline clean-consumer test installs the generated CLI and Core tarballs with lifecycle scripts disabled and exercises the installed CLI; it passes locally and on all 9 CI matrix jobs.
 - Main `npm run verify` and `npm run test:contracts` passed; all 5 cross-package tests passed against updated Core/CLI builds. The 25-case matrix now expects cross-source runtime contradictions to be unknown, with decreased determinate coverage; it remains authored regression evidence, not external calibration.
 - Core and CLI tarballs were packed from the follow-up builds and installed together in a fresh offline directory with lifecycle scripts disabled. The installed CLI ran against the contradictory fixture and returned `unknown`, `conflictsAssessed: true`, with README, CONTRIBUTING, and GitHub workflow sources. No sibling source checkout was used at runtime. The CLI PR now automates this tarball-install smoke test.
-- Core Windows workflow-path normalization is merged in Core PR #9 after 9/9 matrix checks. CLI PR #8 head `abc1c64` passed 9/9 (run `39233545588`); its latest head `cde13b4` adds the offline package-install regression and passed 9/9 (run `39236884638`). Main PR #4's previous coordinated run against Core main and CLI `abc1c64` passed 9/9 (run `39233660891`); this documentation update triggers a rerun against `cde13b4`.
+- Core Windows workflow-path normalization is merged in Core PR #9 after 9/9 matrix checks. CLI PR #8 head `cde13b4` adds the offline package-install regression and passed 9/9 (run `39236884638`). Main PR #4 head `8119979` passed 9/9 against Core `main` and CLI proposal `cde13b4` (run `39237457143`), including all five cross-repository contracts.
 
 ## Known blockers and limits
 
@@ -40,15 +40,15 @@ ContribReady is a deterministic, local-first contributor-readiness auditor that 
 - All three repositories remain public and detect MIT on `main` (GitHub repo metadata verified on 2026-10-18).
 - `Protect main` rulesets are active: main `24795267`, Core `24795398`, CLI `24795367`. No protection changes were made.
 - License PR #2 merged in each repository; security docs PR #3 merged in Core/CLI and main report docs PR #3 merged in the main repository.
-- Seven new scoped issues are open: Core #4–6 and CLI #4–7. See [readiness review](docs/READINESS_REVIEW_20261018.md).
-- GitHub verification on 2026-10-19 confirms Core PR #9 merged with 9/9 checks; CLI PR #8 remains open at `cde13b4` with 9/9 checks green; main PR #4 remains open and its prior coordinated 9/9 run used CLI head `abc1c64`. The latest main matrix is pending. Nothing was published.
+- The seven pre-approval Core/CLI issue records created during the earlier preparation pass are now closed as not planned, per maintainer direction. No contributor issues are open or staged as drafts; create/select them only after relevant program approval.
+- GitHub verification on 2026-10-19 confirms Core PR #9 merged with 9/9 checks; CLI PR #8 remains open at `cde13b4` with 9/9 checks green; main PR #4 remains open and passed its coordinated 9/9 run against CLI head `cde13b4` (run `39237457143`). No package was published.
 
 ## Next three actions
 
 1. Complete maintainer review of CLI PR #8 and main PR #4 against their green coordinated heads; merge only with authorization through protected PRs.
 2. After CLI merges, switch main CI back to CLI `main` and rerun the default-branch matrix.
-3. Obtain an independent contributor walkthrough and confirm a relevant Drips Program and maintainer response capacity before applying; verify GrantFox's route before any application.
+3. Confirm relevant Drips Program fit and maintainer review capacity; only after repository approval, curate and publish contributor issues. Obtain an independent contributor walkthrough before the first tasks are offered.
 
 ## Decision
 
-**Improve before submission** for Drips Wave (internal preparation rubric: 75/100; not an official score or approval probability). The reproducibility/cross-platform evidence axis gained one point for the automated clean tarball install passing the full matrix; external contributor experience and program fit remain unverified. **Defer** GrantFox application until a formal route and genuine program fit are confirmed; its 38/100 estimate remains unrefreshed. See [the readiness review](docs/READINESS_REVIEW_20261018.md).
+**Improve before submission** for Drips Wave (internal pre-approval preparation rubric: 59/100; not an official score or approval probability). The issue-portfolio category is currently 0/20 because the maintainer-directed policy defers public contributor tasks until repository approval; this is a stage-specific readiness gap, not an invitation to publish issues early. **Defer** GrantFox application until a formal route and genuine program fit are confirmed; its 38/100 estimate remains unrefreshed. See [the readiness review](docs/READINESS_REVIEW_20261018.md).
