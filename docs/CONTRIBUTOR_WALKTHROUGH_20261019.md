@@ -40,9 +40,13 @@ Each proposal branch completed all 9 Node/OS combinations successfully:
 | `contribready-core` | `audit/readiness-review-20261018-core` | 9/9 | [GitHub Actions](https://github.com/ContribReady/contribready-core/actions/runs/39216575294) |
 | `contribready-cli` | `audit/readiness-review-20261018-cli` | 9/9 | [GitHub Actions](https://github.com/ContribReady/contribready-cli/actions/runs/39217202072) |
 
-During the walkthrough the CLI workflow packed the paired Core proposal. After Core PR #7 merged as `c51ab471ba958baaf140504f5c552667177834ad`, the CLI workflow was updated to check out Core `main`; the fresh PR-triggered matrix passed all 9 Node 20/22/24 × Ubuntu/Windows/macOS jobs in [run 39219826236](https://github.com/ContribReady/contribready-cli/actions/runs/39219826236). The main repository's GitHub matrix runs its fixture verification, but does not run the cross-repository contract suite; those 5 contracts passed locally on Windows/Node 24 only.
+At the time of this walkthrough, the main repository's GitHub matrix ran fixture verification but did not run cross-repository contracts; all five contracts passed locally on Windows/Node 24. A later integration change added Core verification, packed-Core CLI installation/verification, and the contract suite to the main Node/OS matrix. The coordinated Core-main/CLI-proposal workflow passed 9/9 on Node 20/22/24 × Ubuntu/Windows/macOS in [run 39231291888](https://github.com/ContribReady/contribready/actions/runs/39231291888); the final documentation head also passed 9/9 in [run 39231949300](https://github.com/ContribReady/contribready/actions/runs/39231949300).
 
 The first CI attempt exposed a real Windows issue: a junction could appear as a directory in `Dirent`, and traversal followed it. CLI now checks each entry with `lstat` before recursing, and the Windows junction regression passes in the matrix. The first CLI integration run also exposed a Core-version mismatch; the reviewed CLI workflow now checks out Core `main`, which contains the merged compatible contracts.
+
+## Post-walkthrough integration status (2026-10-19)
+
+Core PR #9 merged the Windows workflow-path normalization fix after 9/9 protected checks. CLI PR #8 (head `966a7c0`) passed 9/9 against Core `main`, including packed-Core installation, conflict reporting, and SARIF schema tests. Main PR #4 passed 9/9 against Core `main` and the coordinated CLI proposal branch, including all five cross-repository contracts. CLI PR #8 and main PR #4 remain open and unmerged; after CLI merges, the main workflow must be switched from the proposal branch back to `main` and rerun. See [the full readiness review](READINESS_REVIEW_20261018.md).
 
 ## Remaining limitations
 
