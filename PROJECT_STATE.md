@@ -23,7 +23,7 @@ ContribReady is a deterministic, local-first contributor-readiness auditor that 
 - CLI `npm run verify` passed locally against the updated Core build (32 passed, 2 symlink tests skipped because link creation was unavailable; package dry-run passed). SARIF success/error outputs pass the vendored OASIS Errata 01 schema tests.
 - Main `npm run verify` and `npm run test:contracts` passed; all 5 cross-package tests passed against updated Core/CLI builds. The 25-case matrix now expects cross-source runtime contradictions to be unknown, with decreased determinate coverage; it remains authored regression evidence, not external calibration.
 - Core and CLI tarballs were packed from the follow-up builds and installed together in a fresh offline directory with lifecycle scripts disabled. The installed CLI ran against the contradictory fixture and returned `unknown`, `conflictsAssessed: true`, with README, CONTRIBUTING, and GitHub workflow sources. No sibling source checkout was used at runtime.
-- Core Windows workflow-path normalization is merged in Core PR #9 after 9/9 matrix checks. CLI conflict text/SARIF changes are pushed to PR #8 at `966a7c0`; fresh coordinated CI run `39230275133` passed 9/9. Main PR #4's corrected workflow run `39231291888` passed 9/9 against Core main and the coordinated CLI proposal branch; the earlier run against stale CLI main failed. Original local repository checkouts remain preserved.
+- Core Windows workflow-path normalization is merged in Core PR #9 after 9/9 matrix checks. CLI PR #8 head `d88bf0f` adds rejection of non-streaming response bodies; local verification passed 33 tests, with 2 symlink-permission skips, and pack dry-run passed. Its matrix run `39232918779` is pending. Main PR #4's coordinated workflow passed 9/9 against the prior CLI proposal head; rerun it after the latest CLI security fix. Original local repository checkouts remain preserved.
 
 ## Known blockers and limits
 
@@ -41,12 +41,12 @@ ContribReady is a deterministic, local-first contributor-readiness auditor that 
 - `Protect main` rulesets are active: main `24795267`, Core `24795398`, CLI `24795367`. No protection changes were made.
 - License PR #2 merged in each repository; security docs PR #3 merged in Core/CLI and main report docs PR #3 merged in the main repository.
 - Seven new scoped issues are open: Core #4–6 and CLI #4–7. See [readiness review](docs/READINESS_REVIEW_20261018.md).
-- GitHub verification on 2026-10-19 confirms Core PR #9 merged with 9/9 checks; CLI PR #8 remains open with current head `966a7c0` and 9/9 checks green (run `39230275133`); main PR #4 remains open with 9/9 checks green on coordinated run `39231291888`. Nothing was published.
+- GitHub verification on 2026-10-19 confirms Core PR #9 merged with 9/9 checks; CLI PR #8 remains open at `d88bf0f` with its security-fix matrix pending; main PR #4 remains open with 9/9 checks green on the previous coordinated head (run `39231291888`), pending a rerun against latest CLI. Nothing was published.
 
 ## Next three actions
 
-1. Complete maintainer review of CLI PR #8 and main PR #4; retain both open until merge is explicitly authorized.
-2. After CLI is merged through protected review, change main CI's CLI ref from its proposal branch back to `main` and rerun the matrix.
+1. Complete CLI PR #8's matrix for head `d88bf0f` and rerun main PR #4's coordinated matrix against that exact CLI head.
+2. Finish maintainer review; merge only with explicit authorization through protected PRs. After CLI merges, switch main CI back to CLI `main` and rerun.
 3. Obtain an independent contributor walkthrough and confirm a relevant Drips Program and maintainer response capacity before applying; verify GrantFox's route before any application.
 
 ## Decision

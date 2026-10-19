@@ -46,7 +46,7 @@ The first CI attempt exposed a real Windows issue: a junction could appear as a 
 
 ## Post-walkthrough integration status (2026-10-19)
 
-Core PR #9 merged the Windows workflow-path normalization fix after 9/9 protected checks. CLI PR #8 (head `966a7c0`) passed 9/9 against Core `main`, including packed-Core installation, conflict reporting, and SARIF schema tests. Main PR #4 passed 9/9 against Core `main` and the coordinated CLI proposal branch, including all five cross-repository contracts. CLI PR #8 and main PR #4 remain open and unmerged; after CLI merges, the main workflow must be switched from the proposal branch back to `main` and rerun. See [the full readiness review](READINESS_REVIEW_20261018.md).
+Core PR #9 merged the Windows workflow-path normalization fix after 9/9 protected checks. CLI PR #8 (head `966a7c0`) passed 9/9 against Core `main`, including packed-Core installation, conflict reporting, and SARIF schema tests. Main PR #4 passed 9/9 against Core `main` and the coordinated CLI proposal branch, including all five cross-repository contracts. A subsequent review found the custom-transport no-stream fallback could buffer unbounded text; CLI head `d88bf0f` now rejects that response shape and has a regression test (local CLI verification: 33 passed, 2 permission-dependent symlink skips). Its CI and a main matrix rerun against that exact CLI head are pending. CLI PR #8 and main PR #4 remain open and unmerged; after CLI merges, the main workflow must be switched from the proposal branch back to `main` and rerun. See [the full readiness review](READINESS_REVIEW_20261018.md).
 
 ## Remaining limitations
 
