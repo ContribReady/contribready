@@ -1,5 +1,7 @@
 # ContribReady v0.1 Final Audit
 
+> Historical audit of the 2026-10-08 implementation snapshot; it is not the current release decision. Its “criteria satisfied” conclusion is superseded by [the 2026-10-18 readiness review](docs/READINESS_REVIEW_20261018.md) and the updated [release checklist](RELEASE_CHECKLIST.md). In particular, the current rules have not been calibrated against a broad labeled corpus, full cross-platform results are not available for current proposals, and no unaided contributor trial was completed.
+
 Audit date: 2026-10-08  
 Audit scope: Phase 13 — v0.1 Product Readiness  
 Result: local release-candidate criteria satisfied. GitHub publication was completed afterward; current publication and CI status are recorded below.
@@ -35,7 +37,7 @@ The parent `ContribReady` folder is a navigation container and has no `.git` dir
 | Main Core/CLI contract tests | 4/4 pass |
 | Total tests executed in release audit | 32/32 pass |
 
-The fixture corpus covers excellent, poor, missing, contradictory, complete-issue, vague-issue, and mocked GitHub API cases. The contradictory fixture remains a documented limitation: current rules are deterministic but do not yet reconcile conflicting runtime claims.
+The original release audit treated contradictory runtime claims as unresolved. The current narrow CR-SETUP-002 v2 implementation detects some incompatible explicit runtime-version claims across recognized documentation/workflow sources and returns unknown with source-attributed conflict evidence. The Windows workflow-path case is covered. It does not resolve general semantic contradictions, interpret compatibility matrices/ranges, or select which source is authoritative; same-source ambiguity and other conflict types remain limitations. See the current [rule catalog](docs/RULE_CATALOG.md) and [readiness review](docs/READINESS_REVIEW_20261018.md).
 
 ## Real public smoke tests
 

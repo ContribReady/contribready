@@ -3,8 +3,8 @@
 </div>
 
 <div align="center">
-  <strong>Can a new contributor realistically succeed in this repository?</strong><br />
-  ContribReady answers with bounded evidence, explainable findings, and actionable next steps.
+  <strong>Can an outside contributor find enough evidence to understand, install, test, modify, and validate this project?</strong><br />
+  ContribReady reports bounded evidence, explainable findings, and actionable next steps.
 </div>
 
 <br />
@@ -17,9 +17,9 @@
 
 # ContribReady
 
-ContribReady is a deterministic CLI that answers: **can a new contributor realistically succeed in this repository?**
+ContribReady is a deterministic, local-first contributor-readiness auditor that evaluates whether an outside contributor can understand, install, test, modify, and validate a repository or issue using bounded evidence and explainable findings.
 
-It audits contributor-facing evidence—setup, testing, contribution workflow, security guidance, and issue specificity—and produces explainable findings, a documented score, and the next fixes to make.
+It audits documented evidence—setup, testing, contribution workflow, support/security guidance, and issue specificity—and produces explainable findings and recommendations. It does not predict contributor success, judge software quality, replace maintainers, scan for vulnerabilities, or certify that instructions, CI, or contact channels work.
 
 ## Start here
 
@@ -52,7 +52,7 @@ The parent workspace is only a navigation folder. It is not a fourth repository.
 
 ## Why it is useful
 
-Contributor experience is part of project quality. A repository can have working code and still be difficult to enter because setup, testing, contribution, security, or issue expectations are missing. ContribReady makes that surface area reviewable without executing the target project.
+Contributor experience is part of project quality. A repository can have working code and still be difficult to enter because setup, testing, contribution, security, or issue expectations are missing. ContribReady makes documented evidence reviewable without executing the target project; maintainers remain responsible for interpreting findings.
 
 ## v0.1 promise
 
@@ -66,8 +66,8 @@ For the exact ownership boundaries and local layout, see [docs/REPOSITORY_MAP.md
 
 ## Status
 
-Phase 15 implementation is complete, but the 2026-10-09 independent audit found external-readiness gaps that must be closed before a public submission claim. See [AUDIT_REPORT.md](AUDIT_REPORT.md) for verified security, licensing, branch-protection, package-publication, and funding findings; [FINAL_AUDIT.md](FINAL_AUDIT.md) remains the v0.1 implementation/release audit.
+The 2026-10-18/19 source review found that earlier “phase complete” labels overstated verification. Local proposals add score coverage, bounded streamed-response deadlines, schema-validated SARIF, cross-source runtime-conflict evidence, and a synthetic regression matrix. The existing remote PR heads passed Node 20/22/24 × Ubuntu/Windows/macOS; a local follow-up now also validates Core, CLI from a packed Core tarball, and the cross-repository contracts in the main CI matrix, but that workflow update has not yet been pushed or run. A maintainer-led clean-checkout walkthrough passed; it was not an independent blind study. Real-world rule calibration, general contradiction analysis, and external program fit remain open. The project is **improve then submit**, not ready to claim proven impact or package availability. See [current readiness review](docs/READINESS_REVIEW_20261018.md) and [walkthrough record](docs/CONTRIBUTOR_WALKTHROUGH_20261019.md); [FINAL_AUDIT.md](FINAL_AUDIT.md) is a historical v0.1 audit.
 
 ## License
 
-The checked-in `LICENSE` identifies MIT; this private project manifest does not declare a package SPDX license. Core and CLI package metadata declare `MIT`. The complete standard MIT text is proposed on dedicated branches for all three repositories. GitHub's detected license will be checked again after those changes are merged; see [AUDIT_REPORT.md](AUDIT_REPORT.md).
+All three public repositories now contain the complete MIT license, their applicable package metadata agrees, and GitHub reports `MIT` on each default branch. See the [current readiness review](docs/READINESS_REVIEW_20261018.md) and [license/security remediation history](docs/LICENSE_AND_SECURITY_REMEDIATION.md).

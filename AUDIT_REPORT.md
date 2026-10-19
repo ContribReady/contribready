@@ -1,5 +1,7 @@
 # ContribReady Independent Audit Report
 
+> **Current status note — 2026-10-18:** This file below records the earlier 2026-10-09 license/security remediation audit. Its historical “pending license PR” and earlier readiness observations have been superseded: PR #2 merged in all three repositories and GitHub now detects MIT on all three; Core/CLI and main PR #3 security/documentation reports merged; active `Protect main` rulesets were read on 2026-10-18. Security settings themselves were **not** freshly re-read in this newer review. The source/code/submission audit, package results, open gaps, scores, and current recommendation are in [READINESS_REVIEW_20261018.md](docs/READINESS_REVIEW_20261018.md). The newer recommendation is **improve before Drips Wave; defer GrantFox application pending verified route and fit**. Do not rely on the historic status language below as current.
+
 **Audit date:** 2026-10-09
 
 **Scope:** local source, repository boundaries, public GitHub organization/repositories, documentation, package publication, tests, security configuration, and funding-program fit.

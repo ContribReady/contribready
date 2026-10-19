@@ -1,3 +1,3 @@
-# Future Project Issues
+# Issue planning
 
-These are complete, local issue drafts for future publication. They are not remote GitHub issues and creating them remotely requires explicit authorization and a configured repository destination. Each draft follows the current issue-readiness contract: problem, reproduction, expected/observed behavior, scope, acceptance criteria, and definition of done.
+No contributor issues are currently published as open tasks or staged as drafts. Per maintainer direction, create/select contributor tasks only after the repository is approved for a relevant program. Seven pre-approval GitHub issue records were permanently deleted at the maintainer's explicit direction on 2026-10-19; their issue pages confirm deletion. Do not rely on or link to those removed records as audit history.

@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Updated Core/CLI/main integration evidence for bounded runtime-conflict detection, including Windows workflow-path normalization, CLI conflict-state text, corrected fixture score/coverage goldens, and proposed cross-repository CI coverage.
+- Refreshed contributor issue descriptions to distinguish merged work, PR-pending changes, and remaining acceptance criteria; issues remain open until their protected PRs merge.
 - Added an independent organization-wide audit report, corrected submission-readiness claims, documented verified GitHub configuration blockers, and recorded official funding-program fit limits.
 
 ## Unreleased

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "outcomeCodes": { "p": "pass", "f": "fail", "u": "unknown", "n": "not-applicable" },
+  "repositoryRuleOrder": ["CR-SETUP-001", "CR-SETUP-002", "CR-SETUP-003", "CR-SETUP-004", "CR-SETUP-005", "CR-TEST-001", "CR-TEST-002", "CR-TEST-003", "CR-TEST-004", "CR-CONTRIB-001", "CR-CONTRIB-002", "CR-CONTRIB-003", "CR-CONTRIB-004", "CR-SECURITY-001"],
+  "issueRuleOrder": ["CR-ISSUE-001", "CR-ISSUE-002", "CR-ISSUE-003", "CR-ISSUE-004", "CR-ISSUE-005", "CR-ISSUE-006"],
+  "cases": [
+    { "id": "excellent-small", "outcomes": "upppupuupppppp", "score": 100, "coverage": 71, "unknown": 4, "notApplicable": 0, "recommendations": 4, "strictExit": 0 },
+    { "id": "poor-small", "outcomes": "uufuuuuunuuuuu", "score": 0, "coverage": 8, "unknown": 12, "notApplicable": 1, "recommendations": 13, "strictExit": 1 },
+    { "id": "mature-strong", "outcomes": "upppupuppppppp", "score": 100, "coverage": 79, "unknown": 3, "notApplicable": 0, "recommendations": 3, "strictExit": 0 },
+    { "id": "mature-fragmented", "outcomes": "uuupupupppuuuf", "score": 61, "coverage": 43, "unknown": 8, "notApplicable": 0, "recommendations": 9, "strictExit": 1 },
+    { "id": "javascript-typescript", "outcomes": "upppupuuufunuf", "score": 46, "coverage": 46, "unknown": 7, "notApplicable": 1, "recommendations": 9, "strictExit": 1 },
+    { "id": "python", "outcomes": "upppupuuufunuf", "score": 46, "coverage": 46, "unknown": 7, "notApplicable": 1, "recommendations": 9, "strictExit": 1 },
+    { "id": "rust", "outcomes": "upppupuuufunuf", "score": 46, "coverage": 46, "unknown": 7, "notApplicable": 1, "recommendations": 9, "strictExit": 1 },
+    { "id": "go", "outcomes": "uppuupuuufunuf", "score": 39, "coverage": 38, "unknown": 8, "notApplicable": 1, "recommendations": 10, "strictExit": 1 },
+    { "id": "java-kotlin", "outcomes": "upfuuuuunfunuf", "score": 15, "coverage": 33, "unknown": 8, "notApplicable": 2, "recommendations": 11, "strictExit": 1 },
+    { "id": "deno", "outcomes": "uppuuuuunfunuf", "score": 30, "coverage": 33, "unknown": 8, "notApplicable": 2, "recommendations": 10, "strictExit": 1 },
+    { "id": "bun", "outcomes": "upppupuuufunuf", "score": 46, "coverage": 46, "unknown": 7, "notApplicable": 1, "recommendations": 9, "strictExit": 1 },
+    { "id": "docker", "outcomes": "uupuuuuupfunuf", "score": 30, "coverage": 31, "unknown": 9, "notApplicable": 1, "recommendations": 11, "strictExit": 1 },
+    { "id": "nix", "outcomes": "uufuuuuunfunuf", "score": 0, "coverage": 25, "unknown": 9, "notApplicable": 2, "recommendations": 12, "strictExit": 1 },
+    { "id": "monorepo", "outcomes": "upppupuuufunuf", "score": 46, "coverage": 46, "unknown": 7, "notApplicable": 1, "recommendations": 9, "strictExit": 1 },
+    { "id": "multiple-package-managers", "outcomes": "upppuuuunfunuf", "score": 39, "coverage": 42, "unknown": 7, "notApplicable": 2, "recommendations": 9, "strictExit": 1 },
+    { "id": "incomplete-setup", "outcomes": "uufuuuuunfunuf", "score": 0, "coverage": 25, "unknown": 9, "notApplicable": 2, "recommendations": 12, "strictExit": 1 },
+    { "id": "ci-without-local-tests", "outcomes": "upfuuuupnfunuf", "score": 29, "coverage": 42, "unknown": 7, "notApplicable": 2, "recommendations": 10, "strictExit": 1 },
+    { "id": "tests-without-expected-results", "outcomes": "upfuupuuufunuf", "score": 26, "coverage": 38, "unknown": 8, "notApplicable": 1, "recommendations": 11, "strictExit": 1 },
+    { "id": "contributing-without-pr-process", "outcomes": "uuppupuuupuuuf", "score": 55, "coverage": 36, "unknown": 9, "notApplicable": 0, "recommendations": 10, "strictExit": 1 },
+    { "id": "security-without-safe-route", "outcomes": "uuuuuuuunfunuu", "score": 0, "coverage": 8, "unknown": 11, "notApplicable": 2, "recommendations": 12, "strictExit": 1 },
+    { "id": "contradictory-docs", "outcomes": "uuupupupuuuuuf", "score": 48, "coverage": 29, "unknown": 10, "notApplicable": 0, "recommendations": 11, "strictExit": 1 },
+    { "id": "missing-evidence", "outcomes": "fnunnununfunnf", "score": 0, "coverage": 43, "unknown": 4, "notApplicable": 7, "recommendations": 7, "strictExit": 1 },
+    { "id": "hostile-markdown", "outcomes": "upuuupuuufunpf", "score": 42, "coverage": 38, "unknown": 8, "notApplicable": 1, "recommendations": 10, "strictExit": 1 },
+    { "id": "vague-issue", "outcomes": "ffffff", "score": 0, "coverage": 100, "unknown": 0, "notApplicable": 0, "recommendations": 6, "strictExit": 1 },
+    { "id": "actionable-issue", "outcomes": "pppppp", "score": 100, "coverage": 100, "unknown": 0, "notApplicable": 0, "recommendations": 0, "strictExit": 0 }
+  ]
+}

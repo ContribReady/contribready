@@ -9,6 +9,9 @@ jobs:
   fixtures:
     name: Fixtures (${{ matrix.os }}, Node ${{ matrix.node }})
     runs-on: ${{ matrix.os }}
+    env:
+      CONTRIBREADY_CORE_PATH: ${{ github.workspace }}/contribready-core
+      CONTRIBREADY_CLI_PATH: ${{ github.workspace }}/contribready-cli
     strategy:
       fail-fast: false
       matrix:
@@ -16,9 +19,37 @@ jobs:
         node: [20, 22, 24]
     steps:
       - uses: actions/checkout@v5
+      - name: Check out Core
+        uses: actions/checkout@v5
+        with:
+          repository: ${{ github.repository_owner }}/contribready-core
+          path: contribready-core
+          ref: main
+      - name: Check out CLI
+        uses: actions/checkout@v5
+        with:
+          repository: ${{ github.repository_owner }}/contribready-cli
+          path: contribready-cli
+          # Integration always targets the released/default CLI branch.
+          ref: main
       - uses: actions/setup-node@v5
         with:
           node-version: ${{ matrix.node }}
           cache: npm
       - run: npm ci
       - run: npm run verify
+      - name: Install Core development dependencies
+        run: npm ci --prefix contribready-core --ignore-scripts --no-audit --no-fund
+      - name: Verify Core
+        run: npm run verify --prefix contribready-core
+      - name: Pack Core for local CLI installation
+        working-directory: contribready-core
+        run: npm pack --pack-destination ..
+      - name: Install CLI and packed Core dependency
+        working-directory: contribready-cli
+        run: npm install --no-save --package-lock=false --ignore-scripts --no-audit --no-fund ../contribready-core-0.1.0.tgz
+      - name: Verify CLI against packed Core
+        working-directory: contribready-cli
+        run: npm run verify
+      - name: Verify cross-repository contracts
+        run: npm run test:contracts

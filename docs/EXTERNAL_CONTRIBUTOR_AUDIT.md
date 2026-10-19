@@ -1,5 +1,7 @@
 # External Contributor Readiness Audit
 
+> Historical self-audit from 2026-10-08 using the then-current heuristic rules. Its 100% scores are not proof of external contributor success and are not current readiness evidence; see [the 2026-10-18 review](READINESS_REVIEW_20261018.md). No unaided contributor trial was performed.
+
 Audit date: 2026-10-08  
 Scope: Phase 14 — External Contributor Readiness  
 Mode: local, deterministic, no remote writes
