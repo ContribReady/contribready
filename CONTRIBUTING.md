@@ -12,7 +12,7 @@ git clone https://github.com/ContribReady/contribready-core.git
 git clone https://github.com/ContribReady/contribready-cli.git
 npm ci --prefix contribready-core
 npm run verify --prefix contribready-core
-npm pack --prefix contribready-core --pack-destination .
+npm pack ./contribready-core --pack-destination .
 npm install --prefix contribready-cli --no-save --package-lock=false --ignore-scripts --no-audit --no-fund ./contribready-core-0.1.0.tgz
 npm run verify --prefix contribready-cli
 npm ci --prefix contribready
