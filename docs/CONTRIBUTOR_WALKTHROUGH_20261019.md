@@ -40,9 +40,9 @@ Each proposal branch completed all 9 Node/OS combinations successfully:
 | `contribready-core` | `audit/readiness-review-20261018-core` | 9/9 | [GitHub Actions](https://github.com/ContribReady/contribready-core/actions/runs/39216575294) |
 | `contribready-cli` | `audit/readiness-review-20261018-cli` | 9/9 | [GitHub Actions](https://github.com/ContribReady/contribready-cli/actions/runs/39217202072) |
 
-The CLI workflow packs the paired Core proposal and verifies CLI against that artifact. Its workflow currently references the review Core branch; switch that reference to `main` after Core has merged. The main repository's GitHub matrix runs its fixture verification, but does not run the cross-repository contract suite; those 5 contracts passed locally on Windows/Node 24 only.
+During the walkthrough the CLI workflow packed the paired Core proposal. After Core PR #7 merged as `c51ab471ba958baaf140504f5c552667177834ad`, the CLI workflow was updated to check out Core `main`; the fresh PR-triggered matrix passed all 9 Node 20/22/24 × Ubuntu/Windows/macOS jobs in [run 39219826236](https://github.com/ContribReady/contribready-cli/actions/runs/39219826236). The main repository's GitHub matrix runs its fixture verification, but does not run the cross-repository contract suite; those 5 contracts passed locally on Windows/Node 24 only.
 
-The first CI attempt exposed a real Windows issue: a junction could appear as a directory in `Dirent`, and traversal followed it. CLI now checks each entry with `lstat` before recursing, and the Windows junction regression passes in the matrix. The first CLI integration run also exposed that it was using Core `main` rather than the candidate Core contracts; the review workflow now checks out the paired Core proposal.
+The first CI attempt exposed a real Windows issue: a junction could appear as a directory in `Dirent`, and traversal followed it. CLI now checks each entry with `lstat` before recursing, and the Windows junction regression passes in the matrix. The first CLI integration run also exposed a Core-version mismatch; the reviewed CLI workflow now checks out Core `main`, which contains the merged compatible contracts.
 
 ## Remaining limitations
 
@@ -50,4 +50,4 @@ The first CI attempt exposed a real Windows issue: a junction could appear as a 
 - Open contributor issues have no labels. Add labels or a clear “good first issue”/difficulty guide only after maintainer review of suitability.
 - One file-symlink test skipped on this Windows account because link creation was unavailable. Windows directory-junction coverage passed in CI. Replacement races, unusual reparse-point behavior, and live remote failure cases remain outside this walkthrough.
 - The matrix validates the proposed branches; it does not prove semantic rule quality or establish false-positive/false-negative rates. The evaluation corpus remains synthetic.
-- At walkthrough completion, no PRs had been opened. Subsequently, Core PR #7, CLI PR #8, and main PR #4 were opened; all remain unmerged, and packages remain unpublished.
+- At walkthrough completion, no PRs had been opened. Subsequently, Core PR #7, CLI PR #8, and main PR #4 were opened. Core PR #7 is now merged; CLI PR #8 and main PR #4 remain open and unmerged. Packages remain unpublished.
