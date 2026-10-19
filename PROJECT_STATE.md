@@ -40,7 +40,7 @@ ContribReady is a deterministic, local-first contributor-readiness auditor that 
 - All three repositories remain public and detect MIT on `main` (GitHub repo metadata verified on 2026-10-18).
 - `Protect main` rulesets are active: main `24795267`, Core `24795398`, CLI `24795367`. No protection changes were made.
 - License PR #2 merged in each repository; security docs PR #3 merged in Core/CLI and main report docs PR #3 merged in the main repository.
-- The seven pre-approval Core/CLI issue records created during the earlier preparation pass are now closed as not planned, per maintainer direction. No contributor issues are open or staged as drafts; create/select them only after relevant program approval.
+- Seven pre-approval Core/CLI issue records were permanently deleted at the maintainer's explicit direction on 2026-10-19. GitHub's deleted-issue pages confirm removal. No contributor issues are open or staged as drafts; create/select them only after relevant program approval.
 - GitHub verification on 2026-10-19 confirms Core PR #9 merged with 9/9 checks; CLI PR #8 remains open at `cde13b4` with 9/9 checks green; main PR #4 remains open and its latest documentation follow-up passed 9/9 (run `39239153529`), after the coordinated implementation run against CLI head `cde13b4` passed 9/9 (run `39237457143`). No package was published.
 
 ## Next three actions

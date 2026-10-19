@@ -15,7 +15,7 @@ This checklist supersedes the earlier all-checked list. “Local pass” means v
 - [x] CLI `npm run verify` passed locally on Windows/Node 24 (22 pass, 1 directory-link test skipped; package dry-run).
 - [x] Main verify and 4 cross-package contract tests passed against built audit worktrees.
 - [x] Core/CLI tarballs installed together offline in a clean temporary project; Core imported by itself from an isolated Core-only install; installed CLI repository/issue JSON, SARIF parsing, and strict exit checks passed.
-- [x] Seven scoped contributor issues exist in Core/CLI (see readiness review).
+- [ ] Curate and publish scoped contributor issues only after relevant repository/program approval; no contributor issues are currently published or staged.
 - [x] No target repository scripts/tests/workflows were executed by ContribReady during audit checks.
 
 ## Required before release/submission

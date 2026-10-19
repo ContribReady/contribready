@@ -18,7 +18,7 @@ This was a maintainer-led simulation using only the cloned public documentation 
 4. Packed Core locally, installed that tarball into CLI with lifecycle scripts disabled, then ran CLI `npm run verify`: 32 passed, 1 skipped (file-symlink creation unavailable to this account), 0 failed; package dry-run passed. The directory junction test ran and passed.
 5. Ran main `npm ci`, `npm run verify` and `npm run test:contracts`: fixture validation passed and all 5 contract tests passed.
 6. Audited the main checkout and a complete issue fixture with JSON output; both outputs parsed and included scores. Audited the repository as SARIF and parsed the output as SARIF 2.1.0. The vague issue fixture in strict mode returned exit code 1 as expected.
-7. At the time of the walkthrough, seven Core/CLI issues were open without labels. Per subsequent maintainer direction, all seven were closed as not planned; no contributor tasks are currently offered before repository/program approval.
+7. At walkthrough time, seven Core/CLI issues were open without labels. They were subsequently permanently deleted at the maintainer's explicit direction on 2026-10-19; no contributor tasks are currently offered before repository/program approval.
 
 The measured CLI-plus-main dependency/setup/verification sequence took **42.36 seconds** after Core had already been installed and verified. Core's install/verification was successful but not separately timed with a stopwatch. The JSON/SARIF/strict audit commands took **1.29 seconds**. Clone and network time are excluded from these command timings.
 
@@ -46,7 +46,7 @@ The first CI attempt exposed a real Windows issue: a junction could appear as a 
 
 ## Post-walkthrough integration status (2026-10-19)
 
-Core PR #9 merged the Windows workflow-path normalization fix after 9/9 protected checks. CLI PR #8 head `cde13b4` adds an automated offline Core+CLI tarball install test and passed 9/9 on Node 20/22/24 × Ubuntu/Windows/macOS (run 39236884638); local verification passed 34 tests, with 2 symlink-creation skips. Main PR #4 head `8119979` passed the coordinated 9/9 matrix against CLI `cde13b4` (run 39237457143). CLI PR #8 and main PR #4 remain open and unmerged; after CLI merges, the main workflow must be switched from the proposal branch back to `main` and rerun. The seven pre-approval issues were closed as not planned and no contributor task is currently offered. See [the full readiness review](READINESS_REVIEW_20261018.md).
+Core PR #9 merged the Windows workflow-path normalization fix after 9/9 protected checks. CLI PR #8 head `cde13b4` adds an automated offline Core+CLI tarball install test and passed 9/9 on Node 20/22/24 × Ubuntu/Windows/macOS (run 39236884638); local verification passed 34 tests, with 2 symlink-creation skips. Main PR #4 head `8119979` passed the coordinated 9/9 matrix against CLI `cde13b4` (run 39237457143). CLI PR #8 and main PR #4 remain open and unmerged; after CLI merges, the main workflow must be switched from the proposal branch back to `main` and rerun. The seven pre-approval issues were permanently deleted at maintainer direction on 2026-10-19; no contributor task is currently offered. See [the full readiness review](READINESS_REVIEW_20261018.md).
 
 ## Remaining limitations
 
@@ -54,4 +54,4 @@ Core PR #9 merged the Windows workflow-path normalization fix after 9/9 protecte
 - Contributor issue publication is deliberately deferred until relevant repository/program approval; only then should the maintainer select tasks, labels, complexity, and response expectations.
 - One file-symlink test skipped on this Windows account because link creation was unavailable. Windows directory-junction coverage passed in CI. Replacement races, unusual reparse-point behavior, and live remote failure cases remain outside this walkthrough.
 - The matrix validates the proposed branches; it does not prove semantic rule quality or establish false-positive/false-negative rates. The evaluation corpus remains synthetic.
-- At walkthrough completion, no PRs had been opened. Subsequently, Core PR #7, CLI PR #8, and main PR #4 were opened. Core PR #7 is now merged; CLI PR #8 and main PR #4 remain open and unmerged. Packages remain unpublished. All seven pre-approval contributor issues created during preparation have since been closed as not planned at maintainer direction.
+- At walkthrough completion, no PRs had been opened. Subsequently, Core PR #7, CLI PR #8, and main PR #4 were opened. Core PR #7 is now merged; CLI PR #8 and main PR #4 remain open and unmerged. Packages remain unpublished. All seven pre-approval contributor issue records created during preparation were permanently deleted at maintainer direction on 2026-10-19.
