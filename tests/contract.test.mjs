@@ -72,7 +72,9 @@ test("CLI and Core share the same fixture findings and report contract", () => {
 
 function fixtureResponse(value) {
   const body = JSON.stringify(value);
-  return { status: 200, headers: { get: (name) => name.toLowerCase() === "content-length" ? String(new TextEncoder().encode(body).byteLength) : null }, text: async () => body };
+  const bytes = new TextEncoder().encode(body);
+  const stream = new ReadableStream({ start(controller) { controller.enqueue(bytes); controller.close(); } });
+  return { status: 200, headers: { get: (name) => name.toLowerCase() === "content-length" ? String(bytes.byteLength) : null }, body: stream };
 }
 
 test("GitHub API fixtures cross the adapter/Core boundary without reading source blobs", async () => {
