@@ -46,7 +46,7 @@ The first CI attempt exposed a real Windows issue: a junction could appear as a 
 
 ## Post-walkthrough integration status (2026-10-19)
 
-Core PR #9 merged the Windows workflow-path normalization fix after 9/9 protected checks. CLI PR #8 head `abc1c64` passed 9/9 against Core `main`, including packed-Core installation, conflict reporting, SARIF schema tests, and the no-stream response regression (run 39233545588). Main PR #4 passed 9/9 against Core `main` and that coordinated CLI proposal branch, including all five cross-repository contracts (run 39233660891). CLI PR #8 and main PR #4 remain open and unmerged; after CLI merges, the main workflow must be switched from the proposal branch back to `main` and rerun. See [the full readiness review](READINESS_REVIEW_20261018.md).
+Core PR #9 merged the Windows workflow-path normalization fix after 9/9 protected checks. CLI PR #8 head `abc1c64` passed 9/9 against Core `main` (run 39233545588). The updated head `cde13b4` adds an automated offline Core+CLI tarball install test and passed 9/9 on Node 20/22/24 × Ubuntu/Windows/macOS (run 39236884638); local verification passed 34 tests, with 2 symlink-creation skips. Main PR #4's prior coordinated 9/9 run (39233660891) used the earlier CLI head; its updated docs now trigger a rerun against `cde13b4`. CLI PR #8 and main PR #4 remain open and unmerged; after CLI merges, the main workflow must be switched from the proposal branch back to `main` and rerun. See [the full readiness review](READINESS_REVIEW_20261018.md).
 
 ## Remaining limitations
 
