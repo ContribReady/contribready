@@ -44,11 +44,12 @@ Do not claim approval, eligibility, proven contributor conversion, reduced time-
 - [x] Seven scoped Core/CLI contributor issues created; links are in the readiness review.
 - [x] `Protect main` rulesets active on all repositories; no protection setting was changed in this review.
 - [x] Core and CLI local verify commands passed on Windows/Node 24; package tarballs installed and ran in an isolated temporary project without npm network access.
-- [ ] Reverify private vulnerability reporting, Dependabot, secret scanning, and push protection using an authenticated administrative interface; the GitHub CLI token currently reports invalid, and connector access did not expose the security-setting endpoints in this turn.
-- [ ] Complete, human-reviewed multi-ecosystem and ambiguity fixture corpus; measure false positives/negatives without claiming calibration prematurely.
-- [ ] Resolve contradictions, complete GitHub body-stream timeout controls, schema-validate SARIF, and complete remaining security regressions.
-- [ ] Run Node 20/22/24 on Ubuntu/Windows/macOS for the proposed branches; current local validation is Windows/Node 24 only.
-- [ ] Conduct and record an unaided contributor walkthrough from a clean checkout.
+- [x] Repository-scoped security settings were verified on 2026-10-19: private vulnerability reporting, Dependabot alerts/security updates, secret scanning, and push protection were enabled; no open Dependabot alerts were returned. See the dated readiness review. GitHub CLI authentication has since expired, so reverify after reauthentication before submission.
+- [ ] Complete human review of the 25-case synthetic matrix and pursue independently labeled external cases; fixture consistency alone does not measure false-positive/false-negative rates.
+- [ ] Merge the narrow runtime-conflict integration follow-up, streamed-body deadline, and schema-validated SARIF through protected PRs after the coordinated Core → CLI → main CI sequence passes. Do not claim arbitrary contradictions are resolved.
+- [ ] Run the updated main cross-repository workflow and all changed PR heads on Node 20/22/24 × Ubuntu/Windows/macOS. Prior remote heads passed 9/9; the new local workflow/conflict changes have not run in Actions.
+- [x] Record the maintainer-led clean-checkout walkthrough; it is not an independent blind user study.
+- [ ] Run an independent contributor walkthrough and record comprehension and issue-discovery evidence.
 - [ ] Publish Core first and CLI second only after explicit authorization and successful release review; then verify public `npm`/`npx` install.
 - [ ] Verify a real active Drips Wave Program fit and organizer approval before describing participation.
 - [ ] Obtain GrantFox's actual application route and documented eligibility/fit before preparing a funding application.

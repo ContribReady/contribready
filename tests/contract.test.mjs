@@ -41,7 +41,11 @@ test("representative repository fixtures exercise quality bands", () => {
   assert.equal(contradictory.findings.length, excellent.findings.length);
   assert.deepEqual(contradictory, repositoryReport("contradictory-repository"));
   assert.equal(contradictory.findings.some((finding) => finding.evidence.some((item) => item.source === "README.md")), true);
-  assert.equal(contradictory.findings.every((finding) => finding.conflictsAssessed === false), true);
+  const runtime = contradictory.findings.find((finding) => finding.rule.id === "CR-SETUP-002");
+  assert.equal(runtime.outcome, "unknown");
+  assert.equal(runtime.conflictsAssessed, true);
+  assert.deepEqual(runtime.conflictingEvidence.map((item) => item.source), [".github/workflows/ci.yml", "CONTRIBUTING.md", "README.md"]);
+  assert.equal(contradictory.findings.filter((finding) => finding.rule.id !== "CR-SETUP-002").every((finding) => finding.conflictsAssessed === false), true);
 });
 
 test("issue fixtures distinguish complete and vague requests", () => {

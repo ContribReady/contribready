@@ -72,7 +72,7 @@ Purpose: deliver the first bounded additive v1 capabilities without weakening st
 
 ## Phase 16+ — Long-term development and readiness remediation
 
-Derive each next phase from mission, gaps, feedback, backlog, and ecosystem changes; document and freeze it before implementation. The immediate gate is to run the proposed branches through Node 20/22/24 on Ubuntu/Windows/macOS, then perform and document an unaided contributor walkthrough. Reassess evidence-quality, clean-package, and submission-fit gaps in `docs/READINESS_REVIEW_20261018.md` afterward. `AUDIT_REPORT.md` records the 2026-10-09 security/license remediation history; the newer review supersedes its readiness conclusions.
+Derive each next phase from mission, gaps, feedback, backlog, and ecosystem changes; document and freeze it before implementation. Core runtime-claim comparison is merged, and the local follow-up adds Windows-path normalization, CLI conflict-state presentation, corrected contradictory fixtures/goldens, and a full cross-repository contract path in the proposed main CI matrix. Local Core/CLI/main verification and offline tarball installation pass. These follow-up edits are not pushed; the new main workflow has no GitHub CI result yet. Next: reauthenticate GitHub CLI, update the focused protected PR branches, require the complete Node 20/22/24 × Ubuntu/Windows/macOS matrix to pass on the updated heads, and repeat an unaided contributor walkthrough. Reassess submission readiness only against merged/verified state and confirm actual program fit. See `docs/READINESS_REVIEW_20261018.md`; `AUDIT_REPORT.md` records the 2026-10-09 security/license remediation history and is superseded for current readiness.
 
 ## Phase execution matrix
 

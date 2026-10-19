@@ -5,7 +5,7 @@ Initial rule identifiers are versioned and owned by core:
 | ID | Area | Intent |
 | --- | --- | --- |
 | CR-SETUP-001 | setup | a contributor-facing setup guide exists |
-| CR-SETUP-002 | setup | runtime/toolchain prerequisites are stated |
+| CR-SETUP-002 v2 | setup | runtime/toolchain prerequisites are stated consistently across recognized docs/workflows; incompatible or ambiguous claims remain unknown |
 | CR-SETUP-003 | setup | package-manager installation is discoverable |
 | CR-SETUP-004 | setup | development setup steps are actionable |
 | CR-SETUP-005 | setup | environment configuration is discoverable |
@@ -25,4 +25,4 @@ Initial rule identifiers are versioned and owned by core:
 | CR-ISSUE-005 | issue | issue includes acceptance criteria |
 | CR-ISSUE-006 | issue | issue defines done and validation |
 
-Each rule records a stable ID/version, purpose, severity, evidence, logic, recommendation, false-positive considerations, and false-negative limitations. These are heuristic indicators. Current conflict fields explicitly distinguish “not assessed”; there is not yet a cross-source contradiction detector, and no rule passing proves instructions are true or channels effective. The 2026-10-18 review records the observed false-positive/false-negative risks and fixture gaps.
+Each rule records a stable ID/version, purpose, severity, evidence, logic, recommendation, false-positive considerations, and false-negative limitations. These are heuristic indicators. `CR-SETUP-002` v2 is the current limited cross-source runtime conflict detector; other rules explicitly leave conflict assessment false. No rule passing proves instructions are true or channels effective. The 2026-10-18 review records remaining false-positive/false-negative risks and fixture gaps.

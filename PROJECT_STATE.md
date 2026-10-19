@@ -1,7 +1,7 @@
 # Project State
 
 **Updated:** 2026-10-19
-**Current work:** independent readiness review; local deadline, SARIF-schema, and evaluation-matrix remediation
+**Current work:** runtime-conflict integration follow-up; local regression fixes validated, remote PR updates blocked by expired GitHub CLI authentication
 **Submission status:** improve before Drips Wave; defer GrantFox application pending verified route/fit
 
 ## Product
@@ -19,17 +19,17 @@ ContribReady is a deterministic, local-first contributor-readiness auditor that 
 
 - Core and CLI remain version `0.1.0`; neither is published to npm. Release order is Core first, CLI second.
 - Report/scoring schema version 2 distinguishes unknown from fail and reports determinate coverage. Percentage means the result of the documented rules against available evidence, not objective repository quality.
-- Core `npm run verify`: passed locally on Windows/Node 24 (typecheck/build, 13 tests, package dry-run).
-- CLI `npm run verify`: passed locally on Windows/Node 24 (typecheck/build, 31 passed, 2 symlink tests skipped because link creation was unavailable, package dry-run). SARIF output and SARIF error documents validate against the pinned OASIS 2.1.0 Errata 01 schema. A single ten-second GitHub request deadline now covers headers and body streaming; stalled readers are cancelled with stable redacted errors.
-- Main fixture validator/verify and 5 cross-package contract tests passed against isolated Core/CLI builds. The new main-owned matrix covers 23 synthetic repository cases, two issue cases, and seven named security-test groups, pinning findings, score, coverage, unknown/N/A, recommendations, JSON/text/SARIF mappings, and strict exit codes. This is regression coverage, not external calibration.
-- Core installed and imported independently from its tarball; Core and CLI tarballs also installed together in a clean temporary offline project with lifecycle scripts disabled. Installed CLI repository JSON, issue audit invocation, SARIF parsing, and strict-mode exit checks passed. All seven prepared issue drafts passed all six current issue rules.
-- The above are local audit-branch results only. No audit branch was pushed; no new CI run on Node 20/22 or Ubuntu/macOS exists. Original local repository checkouts were preserved.
+- Core `npm run verify` was rerun against the runtime-conflict follow-up: typecheck/build, 16 tests, and package dry-run passed locally on Windows/Node 24.
+- CLI `npm run verify` passed locally against the updated Core build (32 passed, 2 symlink tests skipped because link creation was unavailable; package dry-run passed). SARIF success/error outputs pass the vendored OASIS Errata 01 schema tests.
+- Main `npm run verify` and `npm run test:contracts` passed; all 5 cross-package tests passed against updated Core/CLI builds. The 25-case matrix now expects cross-source runtime contradictions to be unknown, with decreased determinate coverage; it remains authored regression evidence, not external calibration.
+- Core and CLI tarballs were packed from the follow-up builds and installed together in a fresh offline directory with lifecycle scripts disabled. The installed CLI ran against the contradictory fixture and returned `unknown`, `conflictsAssessed: true`, with README, CONTRIBUTING, and GitHub workflow sources. No sibling source checkout was used at runtime.
+- This follow-up is local-only and has not been pushed or run through CI. `gh auth status` now reports an invalid token. Original local repository checkouts remain preserved.
 
 ## Known blockers and limits
 
 - Most rules are heuristic phrase/structure checks. They cannot establish that docs are true/current, tests or CI pass, URLs work, security channels are monitored, or maintainers respond.
-- Contradictory evidence is not reconciled. Current findings set `conflictsAssessed: false`; missing evidence is not yet a complete structured ledger. The contradiction fixture still yields a 100% determinate score at 71% coverage, so percentage and coverage must be shown together.
-- The synthetic matrix does not establish real-world rule accuracy or measured false-positive/false-negative rates. Contradictions remain unreconciled and some evidence fields are generic.
+- `CR-SETUP-002` v2 detects incompatible explicit runtime claims across recognized documentation/workflow sources and reports unknown with source-attributed evidence. Same-source ambiguity remains unknown. It does not select the authoritative version, interpret compatibility matrices, or validate installations; other rules do not generally reconcile contradictions.
+- The synthetic matrix does not establish real-world rule accuracy or measured false-positive/false-negative rates. Some evidence fields remain generic, and the narrow version detector is not general semantic contradiction analysis.
 - CLI body deadline and SARIF schema gaps are fixed on the proposal branch, and the Windows junction traversal regression was fixed after CI caught it. The CLI matrix passed on Ubuntu/Windows/macOS and Node 20/22/24; one file-symlink test skipped where link creation was unavailable. Replacement races, unusual reparse points, and live remote behavior remain unverified.
 - A clean temporary checkout followed the corrected public setup, verified Core/CLI/main, exercised JSON/SARIF and strict exits, and passed five cross-repository contracts. This was a maintainer-led simulation, not a blind external participant study. No package is published and public `npx` is unavailable.
 - GitHub CLI reauthentication succeeded on 2026-10-19. Fresh repository-scoped API reads confirmed private vulnerability reporting, Dependabot alerts, Dependabot security updates, secret scanning, and push protection enabled across all three repositories; no open Dependabot alerts were returned. All three `Protect main` rulesets remain active. No settings were changed. The organization-wide ruleset listing required `admin:org`, but repo-scoped reads succeeded.
@@ -41,14 +41,14 @@ ContribReady is a deterministic, local-first contributor-readiness auditor that 
 - `Protect main` rulesets are active: main `24795267`, Core `24795398`, CLI `24795367`. No protection changes were made.
 - License PR #2 merged in each repository; security docs PR #3 merged in Core/CLI and main report docs PR #3 merged in the main repository.
 - Seven new scoped issues are open: Core #4–6 and CLI #4–7. See [readiness review](docs/READINESS_REVIEW_20261018.md).
-- Proposed changes are committed and pushed to three isolated `audit/readiness-review-20261018-*` branches. PRs are open: Core #7, CLI #8, and main #4; each PR's Node/OS checks passed 9/9. Nothing has been merged or published.
+- GitHub connector verification on 2026-10-19 confirms Core runtime-conflict PR #8 merged; CLI PR #8 and main PR #4 remain open. Their current remote heads still have green 9/9 Node/OS matrices (CLI run `39220340296`, main run `39220305509`), but those runs predate these new local integration changes. `gh auth status` reports an invalid token, so no local branch updates were pushed. Nothing was published.
 
 ## Next three actions
 
-1. Review the CI and walkthrough record, including the main contract-suite CI limitation and unlabelled open contributor issues.
-2. Decide whether to open focused PRs for Core, CLI, and main-repository coordination/docs; if approved, merge Core before CLI and keep `main` protections intact.
-3. Independently address contradiction/evidence-ledger calibration and confirm current Drips Program/GrantFox fit. Publish packages only after explicit release approval.
+1. Reauthenticate GitHub CLI; freshly verify PRs, `main` refs, rulesets, and CI before pushing.
+2. Push the focused Core, CLI, and main regression/doc updates and require Node 20/22/24 × Ubuntu/Windows/macOS CI plus cross-repository contract checks to pass; preserve `Protect main`.
+3. Reassess readiness after merge and an independent contributor walkthrough; verify Drips Program fit and GrantFox's application route before submission.
 
 ## Decision
 
-**Improve before submission** for Drips Wave. **Defer** GrantFox application until a formal route and genuine program fit are confirmed. Internal readiness estimates (not official program scores): Drips Wave 52/100; GrantFox 38/100; both low confidence. Full evidence, caveats, and issue URLs are in [the 2026-10-18 readiness review](docs/READINESS_REVIEW_20261018.md).
+**Improve before submission** for Drips Wave. **Defer** GrantFox application until a formal route and genuine program fit are confirmed. The prior internal estimates (not official program scores)—Drips Wave 52/100 and GrantFox 38/100—predate these local-only changes and must not be treated as refreshed scores. See [the readiness review](docs/READINESS_REVIEW_20261018.md).
