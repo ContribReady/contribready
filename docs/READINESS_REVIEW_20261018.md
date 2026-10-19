@@ -12,15 +12,15 @@ The product is not yet ready for an unqualified Drips Wave or GrantFox submissio
 
 Local engineering improved during this review: scoring/report schema v2 distinguishes unknown results from determinate outcomes and adds coverage; CLI text displays score and coverage together; local file byte accounting uses UTF-8 bytes with bounded enumeration; GitHub responses are streamed and bounded before JSON parsing under one ten-second header/body deadline; canonical GitHub URLs are stricter; output states limitations and “conflicts not assessed”; SARIF output and error output validate offline against the pinned OASIS 2.1.0 Errata 01 schema; the main repo owns a 25-case synthetic evaluation matrix; and CLI CI installs a locally packed Core artifact. All three proposed repositories passed their Node 20/22/24 × Ubuntu/Windows/macOS matrices (9/9 each). A clean-checkout walkthrough passed Core, CLI, main fixtures, five local cross-repository contracts, JSON/SARIF output, and strict-mode exit behavior after documentation corrections. See [the walkthrough record](CONTRIBUTOR_WALKTHROUGH_20261019.md).
 
-These are committed, pushed proposals on isolated audit branches, not changes merged to `main`. No pull request was opened, no package was published, and no release or branch-protection setting was changed. The original local checkouts were not edited.
+These are committed, pushed proposals on isolated audit branches, with open PRs and no changes merged to `main`. PR #7 is Core, PR #8 is CLI, and PR #4 is the product/source-of-truth repository. No package was published, and no release or branch-protection setting was changed. The original local checkouts were not edited.
 
 ## Repository and branch state
 
 | Repository | GitHub identity/default | Current remote `main` snapshot | Audit worktree | Current local result |
 |---|---|---|---|---|
-| [`contribready`](https://github.com/ContribReady/contribready) | Public, `main`; product source of truth | `185a420e7e98df6ed1e8fdca2f860328499e19ad` | `audit/readiness-review-20261018-main` at `2984f23` | Fixture/contract proposals and updated project docs; CI 9/9; pushed, no PR |
-| [`contribready-core`](https://github.com/ContribReady/contribready-core) | Public, `main`; reusable engine | `eaf024a00570b63baba6cdbfaac1061e4a2f3ae9` | `audit/readiness-review-20261018-core` at `cf8e475` | Rule/report/scoring proposals; CI 9/9; pushed, no PR |
-| [`contribready-cli`](https://github.com/ContribReady/contribready-cli) | Public, `main`; executable/adapters | `c37801e96c207eeb1d99b675bd1a7c3937f79b77` | `audit/readiness-review-20261018-cli` at `2fe27ec` | Input/GitHub/output/SARIF/CI proposals; CI 9/9 against paired Core proposal; pushed, no PR |
+| [`contribready`](https://github.com/ContribReady/contribready) | Public, `main`; product source of truth | fetched `main` snapshot | `audit/readiness-review-20261018-main` | Fixture/contract proposals and updated project docs; PR [#4](https://github.com/ContribReady/contribready/pull/4) open; PR CI 9/9 |
+| [`contribready-core`](https://github.com/ContribReady/contribready-core) | Public, `main`; reusable engine | fetched `main` snapshot | `audit/readiness-review-20261018-core` | Rule/report/scoring proposals; PR [#7](https://github.com/ContribReady/contribready-core/pull/7) open; PR CI 9/9 |
+| [`contribready-cli`](https://github.com/ContribReady/contribready-cli) | Public, `main`; executable/adapters | fetched `main` snapshot | `audit/readiness-review-20261018-cli` | Input/GitHub/output/SARIF/CI proposals; PR [#8](https://github.com/ContribReady/contribready-cli/pull/8) open; PR CI 9/9 against paired Core proposal |
 
 The workspace parent is not a Git repository. The three original local checkouts were clean and preserved on pre-existing audit branches whose remote tracking branches are deleted: main `audit/license-security-remediation-20261009` (`5c1ed6d`), Core `audit/issue-readiness-false-positive-20261009` (`da99c43`), and CLI `audit/install-and-reporting-docs-20261009` (`5789cab`). Fresh isolated worktrees are based on fetched remote `main` snapshots and contain the pushed proposals named above. GitHub CLI reauthentication succeeded on 2026-10-19; repo-scoped admin/security reads are recorded below. No credential was printed.
 
@@ -118,8 +118,8 @@ GrantFox OSS publicly describes an open-source contributor/collaboration mission
 
 ## Exact next three actions
 
-1. Review the 27 successful CI jobs and [clean-checkout walkthrough](CONTRIBUTOR_WALKTHROUGH_20261019.md), including its limits and remaining issue-label gap.
-2. Decide whether to open focused PRs. If approved, Core should be merged before CLI; change CLI CI's paired-Core ref to `main` after Core merge. No PR is currently open.
+1. Review the open [Core PR #7](https://github.com/ContribReady/contribready-core/pull/7) and merge it only after maintainer approval.
+2. After Core merges, change CLI PR #8's paired-Core workflow ref to `main`, rerun its matrix, then review the CLI PR. Review main PR #4 after the implementation order is settled.
 3. Close contradiction/score-calibration gaps and confirm current Drips Program and GrantFox route fit before any submission; do not publish packages without explicit release authorization.
 
 ## Files changed in the isolated audit worktrees
@@ -130,4 +130,4 @@ GrantFox OSS publicly describes an open-source contributor/collaboration mission
 
 **CLI:** `.github/workflows/ci.yml`, `package-lock.json`, `src/input.ts`, `src/node-shims.d.ts`, `src/github/index.ts`, `src/output.ts`, `test/cli.test.mjs`, `test/github-url.test.mjs`.
 
-Final `git diff --check` passed for all three isolated worktrees. The original checkouts remained clean. Proposal branches are pushed; no source changes are on `main`, no code PR was opened, and no package was published.
+Final `git diff --check` passed for all three isolated worktrees. The original checkouts remained clean. Proposal branches are pushed; no source changes are on `main`, all three PRs remain open, and no package was published.

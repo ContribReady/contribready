@@ -50,4 +50,4 @@ The first CI attempt exposed a real Windows issue: a junction could appear as a 
 - Open contributor issues have no labels. Add labels or a clear “good first issue”/difficulty guide only after maintainer review of suitability.
 - One file-symlink test skipped on this Windows account because link creation was unavailable. Windows directory-junction coverage passed in CI. Replacement races, unusual reparse-point behavior, and live remote failure cases remain outside this walkthrough.
 - The matrix validates the proposed branches; it does not prove semantic rule quality or establish false-positive/false-negative rates. The evaluation corpus remains synthetic.
-- No pull requests were opened, no changes were merged, and packages remain unpublished.
+- At walkthrough completion, no PRs had been opened. Subsequently, Core PR #7, CLI PR #8, and main PR #4 were opened; all remain unmerged, and packages remain unpublished.

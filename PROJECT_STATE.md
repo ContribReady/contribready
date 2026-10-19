@@ -41,7 +41,7 @@ ContribReady is a deterministic, local-first contributor-readiness auditor that 
 - `Protect main` rulesets are active: main `24795267`, Core `24795398`, CLI `24795367`. No protection changes were made.
 - License PR #2 merged in each repository; security docs PR #3 merged in Core/CLI and main report docs PR #3 merged in the main repository.
 - Seven new scoped issues are open: Core #4–6 and CLI #4–7. See [readiness review](docs/READINESS_REVIEW_20261018.md).
-- Proposed changes are committed and pushed to three isolated `audit/readiness-review-20261018-*` branches. CI passed 9/9 jobs per repository. No PRs were opened, changes merged, or packages published.
+- Proposed changes are committed and pushed to three isolated `audit/readiness-review-20261018-*` branches. PRs are open: Core #7, CLI #8, and main #4; each PR's Node/OS checks passed 9/9. Nothing has been merged or published.
 
 ## Next three actions
 
