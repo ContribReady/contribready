@@ -19,8 +19,8 @@ These are committed, pushed proposals on isolated audit branches, not changes me
 | Repository | GitHub identity/default | Current remote `main` snapshot | Audit worktree | Current local result |
 |---|---|---|---|---|
 | [`contribready`](https://github.com/ContribReady/contribready) | Public, `main`; product source of truth | `185a420e7e98df6ed1e8fdca2f860328499e19ad` | `audit/readiness-review-20261018-main` at `2984f23` | Fixture/contract proposals and updated project docs; CI 9/9; pushed, no PR |
-| [`contribready-core`](https://github.com/ContribReady/contribready-core) | Public, `main`; reusable engine | `eaf024a00570b63baba6cdbfaac1061e4a2f3ae9` | `audit/readiness-review-20261018-core` at `b2b17e5` | Rule/report/scoring proposals; CI 9/9; pushed, no PR |
-| [`contribready-cli`](https://github.com/ContribReady/contribready-cli) | Public, `main`; executable/adapters | `c37801e96c207eeb1d99b675bd1a7c3937f79b77` | `audit/readiness-review-20261018-cli` at `760811d` | Input/GitHub/output/SARIF/CI proposals; CI 9/9 against paired Core proposal; pushed, no PR |
+| [`contribready-core`](https://github.com/ContribReady/contribready-core) | Public, `main`; reusable engine | `eaf024a00570b63baba6cdbfaac1061e4a2f3ae9` | `audit/readiness-review-20261018-core` at `cf8e475` | Rule/report/scoring proposals; CI 9/9; pushed, no PR |
+| [`contribready-cli`](https://github.com/ContribReady/contribready-cli) | Public, `main`; executable/adapters | `c37801e96c207eeb1d99b675bd1a7c3937f79b77` | `audit/readiness-review-20261018-cli` at `2fe27ec` | Input/GitHub/output/SARIF/CI proposals; CI 9/9 against paired Core proposal; pushed, no PR |
 
 The workspace parent is not a Git repository. The three original local checkouts were clean and preserved on pre-existing audit branches whose remote tracking branches are deleted: main `audit/license-security-remediation-20261009` (`5c1ed6d`), Core `audit/issue-readiness-false-positive-20261009` (`da99c43`), and CLI `audit/install-and-reporting-docs-20261009` (`5789cab`). Fresh isolated worktrees are based on fetched remote `main` snapshots and contain the pushed proposals named above. GitHub CLI reauthentication succeeded on 2026-10-19; repo-scoped admin/security reads are recorded below. No credential was printed.
 
@@ -130,4 +130,4 @@ GrantFox OSS publicly describes an open-source contributor/collaboration mission
 
 **CLI:** `.github/workflows/ci.yml`, `package-lock.json`, `src/input.ts`, `src/node-shims.d.ts`, `src/github/index.ts`, `src/output.ts`, `test/cli.test.mjs`, `test/github-url.test.mjs`.
 
-Final `git diff --check` passed for all three isolated worktrees before the walkthrough record update. The original checkouts remained clean. Proposal branches are pushed; no source changes are on `main`, no code PR was opened, and no package was published.
+Final `git diff --check` passed for all three isolated worktrees. The original checkouts remained clean. Proposal branches are pushed; no source changes are on `main`, no code PR was opened, and no package was published.
