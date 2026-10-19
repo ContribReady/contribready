@@ -1,66 +1,33 @@
-# License and Security Remediation
+# License and security remediation status
 
-**Work date:** 2026-10-09 (Africa/Lagos)
+**Reviewed:** 2026-10-18. This report supersedes the earlier pending-PR wording. It records currently verified public repository metadata and the date of security-setting verification separately.
 
-## Scope and verified repository identity
+## License status — verified on default branches
 
-Authenticated GitHub account: `Marvelg256`. GitHub API repository records show this account has administrator permission on each target. Credentials were not read or included in output.
+| Repository | GitHub detected license | Applicable package metadata | Current result |
+|---|---|---|---|
+| [`contribready`](https://github.com/ContribReady/contribready) | MIT | Main project has no npm package manifest/SPDX field | Complete MIT license merged; GitHub reports MIT |
+| [`contribready-core`](https://github.com/ContribReady/contribready-core) | MIT | `package.json`: `MIT` | Complete MIT license merged; GitHub reports MIT |
+| [`contribready-cli`](https://github.com/ContribReady/contribready-cli) | MIT | `package.json`: `MIT` | Complete MIT license merged; GitHub reports MIT |
 
-| Repository | Local checkout | Git remote | Default branch |
-| --- | --- | --- | --- |
-| [`ContribReady/contribready`](https://github.com/ContribReady/contribready) | `C:\Users\user\Projects\ContribReady\contribready` | `https://github.com/ContribReady/contribready.git` | `main` |
-| [`ContribReady/contribready-core`](https://github.com/ContribReady/contribready-core) | `C:\Users\user\Projects\ContribReady\contribready-core` | `https://github.com/ContribReady/contribready-core.git` | `main` |
-| [`ContribReady/contribready-cli`](https://github.com/ContribReady/contribready-cli) | `C:\Users\user\Projects\ContribReady\contribready-cli` | `https://github.com/ContribReady/contribready-cli.git` | `main` |
+The complete license corrections were merged in each repository's PR #2. They preserve `Copyright (c) 2026 ContribReady contributors`. GitHub's repository metadata returned `license.spdx_id: MIT` for all three on 2026-10-18.
 
-The original checkouts were clean on their existing pushed audit branches; no user changes were overwritten. License corrections were made in isolated worktrees based on each repository's fetched `origin/main`.
+## Security settings — historical verification and current limitation
 
-## License corrections
+The 2026-10-09 remediation run recorded readback of private vulnerability reporting, Dependabot alerts/security updates, secret scanning, and push protection as enabled across all three repositories; its setting-level commands and snapshot are preserved in the merged [audit report](../AUDIT_REPORT.md). This review did not obtain a new setting-level readback. The installed `gh` CLI reported its saved token invalid on 2026-10-18, and the connected GitHub tool did not expose the sensitive security-settings endpoints. Therefore those settings are **previously verified (2026-10-09), not reverified on 2026-10-18**. No security setting was changed during this review. No alert counts or current vulnerability state are asserted here.
 
-Each proposed `LICENSE` preserves `Copyright (c) 2026 ContribReady contributors` and exactly matches the requested complete standard MIT text (line endings normalized for comparison). Core and CLI `package.json` declare `MIT`. The main repository uses a private project manifest with no SPDX license field; its README was corrected so it no longer claims that manifest declares MIT.
+The GitHub API did verify that each repository still has an active `Protect main` ruleset on 2026-10-18:
 
-| Repository | License branch / commit | Pull request | Merge state | GitHub detection |
-| --- | --- | --- | --- | --- |
-| `contribready` | `fix/complete-mit-license` / `1767c5a` | [#2](https://github.com/ContribReady/contribready/pull/2) | Open; not merged at report time | `NOASSERTION` / Other on `main`; recheck after merge |
-| `contribready-core` | `fix/complete-mit-license` / `77818b6` | [#2](https://github.com/ContribReady/contribready-core/pull/2) | Open; not merged at report time | `NOASSERTION` / Other on `main`; recheck after merge |
-| `contribready-cli` | `fix/complete-mit-license` / `d32fc9d` | [#2](https://github.com/ContribReady/contribready-cli/pull/2) | Open; not merged at report time | `NOASSERTION` / Other on `main`; recheck after merge |
+| Repository | Ruleset ID | State |
+|---|---:|---|
+| `contribready` | `24795267` | Active |
+| `contribready-core` | `24795398` | Active |
+| `contribready-cli` | `24795367` | Active |
 
-The exact-text comparison passed for all three proposed files. `git diff --check` passed. These are text-only changes; package tests were not necessary for the license content itself. No PR was merged automatically.
+Only ruleset identity and enforcement were read. Rule contents were not changed. The GitHub connector confirmed admin permission on each repository; to reverify/change security settings, reauthenticate GitHub CLI (`gh auth login -h github.com`) or use the repository's authenticated GitHub Security settings UI. Do not weaken `Protect main` or expose vulnerability details publicly.
 
-## Security settings verified after changes
+## Security-documentation merge state
 
-| Setting | `contribready` | `contribready-core` | `contribready-cli` |
-| --- | --- | --- | --- |
-| Private vulnerability reporting | Enabled and API-verified | Enabled and API-verified | Enabled and API-verified |
-| Dependabot alerts | Already enabled (HTTP 204) | Already enabled (HTTP 204) | Already enabled (HTTP 204) |
-| Open Dependabot alerts | 0 | 0 | 0 |
-| Dependabot security updates | Enabled; `paused: false` | Enabled; `paused: false` | Enabled; `paused: false` |
-| Secret scanning | Enabled | Enabled | Enabled |
-| Repository push protection | Enabled | Enabled | Enabled |
-| Open secret-scanning alerts | 0 | 0 | 0 |
-| `Protect main` ruleset | Active (ID 24795267) | Active (ID 24795398) | Active (ID 24795367) |
+The focused security-policy updates merged as PR #3 in Core and CLI. Main's broader report/security update merged as PR #3. They document GitHub's private reporting route and recommend using the repository Security → Advisories → Report a vulnerability interface. A setting being enabled does not establish that maintainers monitor reports or respond within a service level.
 
-Dependabot alerts were already enabled and were not toggled. The other enabled settings were verified by reading their corresponding repository API state after the change. GitHub's secret-scanning API was queried for open-alert counts only; no alert content or secret material was retrieved. Public repositories receive free secret-scanning coverage; the repository-level scanning and push-protection settings now also report enabled. Non-provider secret patterns and validity checks remain disabled and were not requested or changed.
-
-Private vulnerability reporting was enabled with GitHub's documented repository API. The main, Core, and CLI `SECURITY.md` instructions are being updated in focused documentation PRs to point to the private **Security → Advisories → Report a vulnerability** path:
-
-- Main report/guidance: [contribready PR #3](https://github.com/ContribReady/contribready/pull/3) (open; contains this report)
-- Core guidance: [contribready-core PR #3](https://github.com/ContribReady/contribready-core/pull/3)
-- CLI guidance: [contribready-cli PR #3](https://github.com/ContribReady/contribready-cli/pull/3)
-
-The `Protect main` rulesets were read before and after; all three remain active with the same IDs and enforcement. No branch rule, bypass actor, target, visibility, or default branch was modified. No direct push to `main`, force-push, merge, release, or plan/billing change was performed.
-
-## Operations and validation
-
-Read-only inspection used `git status --porcelain=v2 --branch`, `git remote -v`, `gh auth status`, `gh api user`, repository metadata, ruleset listings, and the license/package files. The authenticated identity and admin permission were verified without exposing credentials.
-
-GitHub security operations used `PUT /repos/{owner}/{repo}/private-vulnerability-reporting`, `PUT /repos/{owner}/{repo}/automated-security-fixes`, and `PATCH /repos/{owner}/{repo}` with only the `secret_scanning` and `secret_scanning_push_protection` status fields. Dependabot alerts were verified with `GET /repos/{owner}/{repo}/vulnerability-alerts`; alert counts used the Dependabot and secret-scanning list endpoints with output restricted to counts/severity groups. Final states were then read back from the API.
-
-License branches were compared exactly against the required standard MIT wording (line endings normalized), checked for the preserved notice, checked against applicable package metadata, and run through `git diff --check`. The main project manifest has no applicable SPDX `license` declaration; Core and CLI both declare MIT.
-
-## Remaining actions
-
-1. Review and merge the three license PRs through the active Protect main workflow; then query GitHub's `license.spdx_id` again for each repository. Until merge, detected license remains `NOASSERTION`/Other and must not be represented as corrected on `main`.
-2. Review and merge the three security-policy documentation PRs. The private-reporting settings themselves are already enabled and verified; no test vulnerability was submitted.
-3. Recheck all security settings and Protect main rulesets after merges. Dependabot and secret-alert counts were zero at this audit snapshot; enabling alerts does not imply dependencies are risk-free.
-
-No setting change was rejected or blocked by permissions or plan limitations. The three license PRs and two component security-documentation PRs had passing automated CI checks and were reported mergeable with no conflicts at the last readback. This report-only update created a new head for the main report PR; its CI rerun was pending at final verification, so recheck it before merging. All six PRs remain open and unmerged for maintainer review.
+No secrets, reports, public vulnerability issues, releases, package publication, or branch-protection changes were created by this audit.

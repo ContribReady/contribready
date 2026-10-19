@@ -11,6 +11,8 @@ flowchart TD
 
 The main repository owns the product source of truth and coordination artifacts. Core accepts normalized evidence and issue documents. CLI owns filesystem access, presentation, and optional GitHub transport/authentication. Core has no Node filesystem, HTTP, GitHub, or CLI dependency. GitHub becomes a separate repository only after a documented independent reuse, release, and contributor boundary exists.
 
+The product's claim is deliberately bounded: it evaluates documented contributor evidence, not actual contributor success, code quality, maintainer behavior, or security. Rule evaluation is heuristic and must expose unknown/missing/conflict limitations; current rules do not reconcile contradictory claims (`conflictsAssessed: false`). Report schema/scoring version 2 is versioned and the score must be read together with determinate coverage.
+
 Phase 2 CLI modules are separated by responsibility: `args.ts` parses and validates options, `input.ts` performs bounded local reads, `output.ts` renders reports/errors, `errors.ts` owns stable error codes, and `index.ts` coordinates the command flow. Phase 3 extends `input.ts` into a bounded evidence engine while `core/src/evidence.ts` classifies normalized relative paths without filesystem access. It reads contributor-relevant files only: README/documentation, manifests, lockfiles, workflows, tests, templates, and policies. It skips source files, dependency/build directories, symlinks, oversized files, and traversal beyond configured limits.
 
 Phase 8 scoring and recommendations are Core-owned. CLI selects repository rules for repository audits and issue rules for issue audits, then renders the versioned Core report. CLI does not recalculate category weights or reorder recommendations.

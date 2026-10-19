@@ -25,4 +25,4 @@ Initial rule identifiers are versioned and owned by core:
 | CR-ISSUE-005 | issue | issue includes acceptance criteria |
 | CR-ISSUE-006 | issue | issue defines done and validation |
 
-Each rule records purpose, severity, evidence, logic, recommendation, and false-positive considerations.
+Each rule records a stable ID/version, purpose, severity, evidence, logic, recommendation, false-positive considerations, and false-negative limitations. These are heuristic indicators. Current conflict fields explicitly distinguish “not assessed”; there is not yet a cross-source contradiction detector, and no rule passing proves instructions are true or channels effective. The 2026-10-18 review records the observed false-positive/false-negative risks and fixture gaps.

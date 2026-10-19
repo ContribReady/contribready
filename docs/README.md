@@ -2,6 +2,8 @@
 
 This folder contains the product-level documentation for the ContribReady repository. Start from the main [README](../README.md) when you need the product overview.
 
+For the current source-level, security, packaging, and submission decision, start with the [2026-10-18 readiness review](READINESS_REVIEW_20261018.md). Older phase/audit reports are historical artifacts and are not current proof of readiness.
+
 ## Find your way
 
 | Need | Read |

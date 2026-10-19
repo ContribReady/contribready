@@ -22,4 +22,14 @@ test("fixture corpus is complete and self-contained", () => {
   for (const path of required) assert.equal(existsSync(fixture(path)), true, path);
   assert.match(readFileSync(fixture("issues/complete.md"), "utf8"), /Acceptance criteria/);
   assert.match(readFileSync(fixture("issues/vague.md"), "utf8"), /Please fix this soon/);
+  const matrix = JSON.parse(readFileSync(fixture("evaluation-matrix.json"), "utf8"));
+  const expected = JSON.parse(readFileSync(fixture("evaluation-matrix.expected.json"), "utf8"));
+  assert.equal(matrix.repositoryCases.length, 23);
+  assert.equal(matrix.issueCases.length, 2);
+  assert.equal(matrix.securityCases.length, 7);
+  assert.deepEqual(expected.cases.map((item) => item.id), [...matrix.repositoryCases, ...matrix.issueCases].map((item) => item.id));
+  for (const scenario of [...matrix.repositoryCases, ...matrix.issueCases]) {
+    assert.ok(scenario.label, `${scenario.id}: label`);
+    assert.ok(scenario.rationale, `${scenario.id}: rationale`);
+  }
 });

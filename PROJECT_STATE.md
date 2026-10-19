@@ -1,32 +1,54 @@
 # Project State
 
-Updated: 2026-10-09
+**Updated:** 2026-10-19
+**Current work:** independent readiness review; local deadline, SARIF-schema, and evaluation-matrix remediation
+**Submission status:** improve before Drips Wave; defer GrantFox application pending verified route/fit
 
-- Current phase: Phase 16+ — Long-term Development
-- Phase status: queued
-- Last completed: Phase 15 — v1 Expansion
-- Current objective: close the independently audited external-readiness blockers before presenting ContribReady as security-reportable or ready for external funding review.
-- Completed work: main source-of-truth repository, two justified supporting repositories, project documentation, architecture, requirements, scoring model, rule catalog, security model, executable roadmap, repository foundations, typed core contracts, seed rules, CLI command parsing, local audit/issue commands, bounded input loading, recursive contributor-evidence discovery, pure path classification, evidence inventories, setup rules, testing/reproduction rules, contribution workflow/review/support rules, local Markdown issue normalization, six issue-readiness rules, weighted scoring, category breakdowns, deterministic recommendations, human/JSON output, structured errors, canonical GitHub URL parsing, bounded GitHub issue/repository retrieval, optional token authentication, stable remote errors, terminal-output sanitization, credential/response/resource limits, redirect refusal, threat-model documentation, excellent/poor/missing/contradictory repository fixtures, complete/vague issue fixtures, mocked GitHub API fixtures, cross-package contract tests, and deterministic core/CLI/main-repository test harnesses.
-- Remaining work: verified private vulnerability reporting/contact route; owner-approved complete license text; protected main branches; dependency/secret security controls; npm publication and clean-install test; unaided contributor test; funding-specific eligibility and impact evidence; future scope selection.
-- Known blockers: safe vulnerability reporting is not configured; package names are not published; GitHub main branches are unprotected; license files are abbreviated despite MIT metadata; funding eligibility/impact has not been established.
-- Known risks: readiness rules are keyword/file-presence heuristics and do not prove guidance/channel effectiveness; Unicode byte accounting and post-parse GitHub JSON sizing need follow-up; the product has no demonstrated Stellar integration/impact.
-- Next phase: Phase 16+ — Long-term Development.
-- Next action: derive and document the next phase from backlog, contributor feedback, ecosystem evidence, and security review before implementation.
-- Release target: v0.1.0, 2026-10-09 12:00 WAT.
+## Product
 
-## Submission readiness
+ContribReady is a deterministic, local-first contributor-readiness auditor that evaluates whether an outside contributor can understand, install, test, modify, and validate a repository or issue using bounded evidence and explainable findings. It assesses documented evidence only. It is not a contributor-success oracle, software-quality score, security scanner, AI maintainer replacement, GitHub approval engine, or substitute for human judgment.
 
-- Local audit preparation: complete.
-- Primary submission repository: `contribready`.
-- Supporting repositories: `contribready-core` and `contribready-cli`.
-- GitHub publication: complete; all three public repositories are under the `ContribReady` organization with `main` as the default branch.
-- CI after publication: passing for all three repositories across Ubuntu, Windows, and macOS with Node.js 20, 22, and 24.
-- npm package publication, Drips repository claim/FUNDING.json setup, and grant applications: not completed.
-- Submission guide: [docs/GRANT_SUBMISSION.md](docs/GRANT_SUBMISSION.md).
-- Independent audit: [AUDIT_REPORT.md](AUDIT_REPORT.md); remediations are on dedicated audit branches and are not merged to `main`.
+## Verified repository family
 
-## Repository state
+- [`contribready`](https://github.com/ContribReady/contribready): public main/source-of-truth repository, default branch `main`; owns product docs, requirements, fixtures, contract tests, release coordination, and submission material.
+- [`contribready-core`](https://github.com/ContribReady/contribready-core): public pure analysis library; owns typed contracts, rules, scoring, recommendations, and reports.
+- [`contribready-cli`](https://github.com/ContribReady/contribready-cli): public executable; owns filesystem evidence adapter, GitHub transport adapter, text/JSON/SARIF output, and exit codes.
+- The workspace parent is navigation only, not a fourth Git repository. No separate GitHub integration or docs repository is justified.
 
-- Main repository: [public GitHub repository](https://github.com/ContribReady/contribready); standalone Git repository; owns project-level source of truth and release coordination.
-- Core repository: [public GitHub repository](https://github.com/ContribReady/contribready-core); standalone Git repository; Phase 8 scoring/recommendation contract complete.
-- CLI repository: [public GitHub repository](https://github.com/ContribReady/contribready-cli); standalone Git repository; Phase 10 security hardening complete; Phase 11 contract-tested with main fixtures; Phase 12 independently package/CI verified; Phase 13 release-audited; Phase 14 externally audited; Phase 15 SARIF/GitHub metadata complete; owns CLI and optional GitHub adapter.
+## Current implementation and validation
+
+- Core and CLI remain version `0.1.0`; neither is published to npm. Release order is Core first, CLI second.
+- Report/scoring schema version 2 distinguishes unknown from fail and reports determinate coverage. Percentage means the result of the documented rules against available evidence, not objective repository quality.
+- Core `npm run verify`: passed locally on Windows/Node 24 (typecheck/build, 13 tests, package dry-run).
+- CLI `npm run verify`: passed locally on Windows/Node 24 (typecheck/build, 31 passed, 2 symlink tests skipped because link creation was unavailable, package dry-run). SARIF output and SARIF error documents validate against the pinned OASIS 2.1.0 Errata 01 schema. A single ten-second GitHub request deadline now covers headers and body streaming; stalled readers are cancelled with stable redacted errors.
+- Main fixture validator/verify and 5 cross-package contract tests passed against isolated Core/CLI builds. The new main-owned matrix covers 23 synthetic repository cases, two issue cases, and seven named security-test groups, pinning findings, score, coverage, unknown/N/A, recommendations, JSON/text/SARIF mappings, and strict exit codes. This is regression coverage, not external calibration.
+- Core installed and imported independently from its tarball; Core and CLI tarballs also installed together in a clean temporary offline project with lifecycle scripts disabled. Installed CLI repository JSON, issue audit invocation, SARIF parsing, and strict-mode exit checks passed. All seven prepared issue drafts passed all six current issue rules.
+- The above are local audit-branch results only. No audit branch was pushed; no new CI run on Node 20/22 or Ubuntu/macOS exists. Original local repository checkouts were preserved.
+
+## Known blockers and limits
+
+- Most rules are heuristic phrase/structure checks. They cannot establish that docs are true/current, tests or CI pass, URLs work, security channels are monitored, or maintainers respond.
+- Contradictory evidence is not reconciled. Current findings set `conflictsAssessed: false`; missing evidence is not yet a complete structured ledger. The contradiction fixture still yields a 100% determinate score at 71% coverage, so percentage and coverage must be shown together.
+- The synthetic matrix does not establish real-world rule accuracy or measured false-positive/false-negative rates. Contradictions remain unreconciled and some evidence fields are generic.
+- CLI body deadline and SARIF schema gaps are fixed in the local proposal branch but not merged/released. Two symlink tests skipped on this Windows account; replacement races, unusual reparse points, live remote behavior, and cross-platform Unicode/resource cases still need CI verification.
+- The package tarball simulation passed locally, but no package is published and public `npx` is not available. No unaided contributor study has been completed.
+- GitHub CLI reauthentication succeeded on 2026-10-19. Fresh repository-scoped API reads confirmed private vulnerability reporting, Dependabot alerts, Dependabot security updates, secret scanning, and push protection enabled across all three repositories; no open Dependabot alerts were returned. All three `Protect main` rulesets remain active. No settings were changed. The organization-wide ruleset listing required `admin:org`, but repo-scoped reads succeeded.
+- No measured user impact, contributor conversion, time-to-first-PR reduction, adoption, or ecosystem-specific fit is established.
+
+## Current GitHub state
+
+- All three repositories remain public and detect MIT on `main` (GitHub repo metadata verified on 2026-10-18).
+- `Protect main` rulesets are active: main `24795267`, Core `24795398`, CLI `24795367`. No protection changes were made.
+- License PR #2 merged in each repository; security docs PR #3 merged in Core/CLI and main report docs PR #3 merged in the main repository.
+- Seven new scoped issues are open: Core #4–6 and CLI #4–7. See [readiness review](docs/READINESS_REVIEW_20261018.md).
+- Current source/code/docs proposals remain uncommitted on isolated local audit branches. No PRs were opened.
+
+## Next three actions
+
+1. Resolve the contradiction/evidence-ledger and score-coverage issue (#4 Core) with regression tests.
+2. Run the proposed branches through Node 20/22/24 on Ubuntu/Windows/macOS and perform the unaided contributor walkthrough.
+3. Decide whether to open focused PRs or apply after reviewing CI, walkthrough results, and actual Drips Program/GrantFox route fit. Publish packages only after explicit release approval.
+
+## Decision
+
+**Improve before submission** for Drips Wave. **Defer** GrantFox application until a formal route and genuine program fit are confirmed. Internal readiness estimates (not official program scores): Drips Wave 52/100; GrantFox 38/100; both low confidence. Full evidence, caveats, and issue URLs are in [the 2026-10-18 readiness review](docs/READINESS_REVIEW_20261018.md).

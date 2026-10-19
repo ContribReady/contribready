@@ -6,7 +6,9 @@ Steps to reproduce:
 1. Run `npm test`.
 2. Use the empty fixture.
 
-Expected behavior: return an empty result. Actual behavior: the parser throws an error.
+Expected behavior: return an empty result.
+
+Actual behavior: the parser throws an error.
 
 Affected module: `src/parser`.
 
@@ -14,4 +16,6 @@ Acceptance criteria:
 - The empty fixture returns an empty result.
 - Existing inputs remain unchanged.
 
-Definition of done: tests pass and documentation is updated.
+Definition of done:
+- The regression test passes.
+- Documentation is updated.

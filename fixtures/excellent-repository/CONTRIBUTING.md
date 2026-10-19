@@ -1,3 +1,10 @@
 # Contributing
 
-Create a branch, make a focused commit, run `npm test`, and open a pull request. Maintainer review and required checks are required before merge.
+Start with the setup and test instructions in README.md.
+
+```sh
+npm ci
+npm test
+```
+
+Create a branch and open a pull request. Maintainers review changes and required checks must pass before merge.

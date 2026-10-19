@@ -1,5 +1,7 @@
 # ContribReady v0.1 Final Audit
 
+> Historical audit of the 2026-10-08 implementation snapshot; it is not the current release decision. Its “criteria satisfied” conclusion is superseded by [the 2026-10-18 readiness review](docs/READINESS_REVIEW_20261018.md) and the updated [release checklist](RELEASE_CHECKLIST.md). In particular, the current rules have not been calibrated against a broad labeled corpus, full cross-platform results are not available for current proposals, and no unaided contributor trial was completed.
+
 Audit date: 2026-10-08  
 Audit scope: Phase 13 — v0.1 Product Readiness  
 Result: local release-candidate criteria satisfied. GitHub publication was completed afterward; current publication and CI status are recorded below.
