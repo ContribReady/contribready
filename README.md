@@ -66,7 +66,7 @@ For the exact ownership boundaries and local layout, see [docs/REPOSITORY_MAP.md
 
 ## Status
 
-The 2026-10-18 source review found that earlier “phase complete” labels overstated verification. Local proposals add score coverage, bounded streamed-response deadlines, schema-validated SARIF, and a synthetic regression matrix. These are still under review; real-world rule calibration and contradiction reconciliation remain open. CI and a clean-checkout contributor walkthrough are in progress on the proposal branches. The project is **improve then submit**, not ready to claim proven impact or package availability. See [current readiness review](docs/READINESS_REVIEW_20261018.md); [FINAL_AUDIT.md](FINAL_AUDIT.md) is a historical v0.1 audit.
+The 2026-10-18 source review found that earlier “phase complete” labels overstated verification. Local proposals add score coverage, bounded streamed-response deadlines, schema-validated SARIF, and a synthetic regression matrix. Proposal-branch CI passed on Node 20/22/24 and Ubuntu/Windows/macOS, and the documented clean-checkout walkthrough passed; neither is merged or released. Real-world rule calibration and contradiction reconciliation remain open. The project is **improve then submit**, not ready to claim proven impact or package availability. See [current readiness review](docs/READINESS_REVIEW_20261018.md) and [walkthrough record](docs/CONTRIBUTOR_WALKTHROUGH_20261019.md); [FINAL_AUDIT.md](FINAL_AUDIT.md) is a historical v0.1 audit.
 
 ## License
 

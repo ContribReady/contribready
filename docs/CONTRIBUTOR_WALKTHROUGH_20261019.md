@@ -1,0 +1,53 @@
+# Clean-checkout contributor walkthrough
+
+**Date:** 2026-10-19  
+**Scope:** Review branches only; no PRs, merges, releases, or package publications.  
+**Environment:** Fresh Windows temporary directory, Node.js 24, public GitHub checkouts.
+
+## Result
+
+The documented source setup now works from a clean checkout after correcting two command-level blockers found during this walkthrough. Core, CLI, the main fixture suite, and the cross-repository contract suite all passed. CLI local repository and issue audits emitted JSON; SARIF parsed as version 2.1.0; strict mode returned exit 1 for the deliberately vague issue fixture.
+
+This was a maintainer-led simulation using only the cloned public documentation during command execution, not an independent blind participant study. Understanding time and issue-selection time were not separately timed. Therefore it does not measure a new contributor's comprehension, and no conversion or time-to-first-PR claim follows from it.
+
+## Walkthrough
+
+1. Cloned the three review branches as siblings under `C:\Users\user\AppData\Local\Temp\contribready-unaided-20261019\`.
+2. Read the main README and `CONTRIBUTING.md`, then followed the CLI README quick-start. The product purpose and repository ownership were findable; the README points users to the CLI and Core repositories and to the contribution guide.
+3. Ran Core `npm ci` and `npm run verify`: passed, including 13 tests and package dry-run.
+4. Packed Core locally, installed that tarball into CLI with lifecycle scripts disabled, then ran CLI `npm run verify`: 32 passed, 1 skipped (file-symlink creation unavailable to this account), 0 failed; package dry-run passed. The directory junction test ran and passed.
+5. Ran main `npm ci`, `npm run verify` and `npm run test:contracts`: fixture validation passed and all 5 contract tests passed.
+6. Audited the main checkout and a complete issue fixture with JSON output; both outputs parsed and included scores. Audited the repository as SARIF and parsed the output as SARIF 2.1.0. The vague issue fixture in strict mode returned exit code 1 as expected.
+7. Inspected current open Core/CLI issues. Seven scoped issues were present, but none had labels; the documentation does not tell a newcomer which one is suitable for a first contribution or how to find a maintainer for scope questions.
+
+The measured CLI-plus-main dependency/setup/verification sequence took **42.36 seconds** after Core had already been installed and verified. Core's install/verification was successful but not separately timed with a stopwatch. The JSON/SARIF/strict audit commands took **1.29 seconds**. Clone and network time are excluded from these command timings.
+
+## Documentation blockers found and corrected
+
+- The CLI quick-start instructed `npm ci` in the CLI checkout even though `@contribready/core@0.1.0` is unpublished. A clean checkout cannot resolve that dependency from npm. The instructions now build and pack Core locally, then install the tarball into CLI with `--ignore-scripts`.
+- `npm pack --prefix contribready-core` did not select the package directory when run from the common parent. The instructions now use `npm pack ./contribready-core --pack-destination .`, which was verified in the clean checkout.
+- The main `CONTRIBUTING.md` now gives the complete sibling-repository order and commands, including the main cross-repository contract test.
+
+An initial dependency install in the restricted command environment failed because DNS/network access to the public npm registry was unavailable. The same public dependency installation succeeded when rerun with network access; this was an environment permission issue, not a repository or package error.
+
+## CI evidence
+
+Each proposal branch completed all 9 Node/OS combinations successfully:
+
+| Repository | Branch | Result | Run |
+|---|---|---:|---|
+| `contribready` | `audit/readiness-review-20261018-main` | 9/9 | [GitHub Actions](https://github.com/ContribReady/contribready/actions/runs/39217203320) |
+| `contribready-core` | `audit/readiness-review-20261018-core` | 9/9 | [GitHub Actions](https://github.com/ContribReady/contribready-core/actions/runs/39216575294) |
+| `contribready-cli` | `audit/readiness-review-20261018-cli` | 9/9 | [GitHub Actions](https://github.com/ContribReady/contribready-cli/actions/runs/39217202072) |
+
+The CLI workflow packs the paired Core proposal and verifies CLI against that artifact. Its workflow currently references the review Core branch; switch that reference to `main` after Core has merged. The main repository's GitHub matrix runs its fixture verification, but does not run the cross-repository contract suite; those 5 contracts passed locally on Windows/Node 24 only.
+
+The first CI attempt exposed a real Windows issue: a junction could appear as a directory in `Dirent`, and traversal followed it. CLI now checks each entry with `lstat` before recursing, and the Windows junction regression passes in the matrix. The first CLI integration run also exposed that it was using Core `main` rather than the candidate Core contracts; the review workflow now checks out the paired Core proposal.
+
+## Remaining limitations
+
+- No independent external contributor participated; comprehension and issue-selection time are unmeasured.
+- Open contributor issues have no labels. Add labels or a clear “good first issue”/difficulty guide only after maintainer review of suitability.
+- One file-symlink test skipped on this Windows account because link creation was unavailable. Windows directory-junction coverage passed in CI. Replacement races, unusual reparse-point behavior, and live remote failure cases remain outside this walkthrough.
+- The matrix validates the proposed branches; it does not prove semantic rule quality or establish false-positive/false-negative rates. The evaluation corpus remains synthetic.
+- No pull requests were opened, no changes were merged, and packages remain unpublished.

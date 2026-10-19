@@ -30,8 +30,8 @@ ContribReady is a deterministic, local-first contributor-readiness auditor that 
 - Most rules are heuristic phrase/structure checks. They cannot establish that docs are true/current, tests or CI pass, URLs work, security channels are monitored, or maintainers respond.
 - Contradictory evidence is not reconciled. Current findings set `conflictsAssessed: false`; missing evidence is not yet a complete structured ledger. The contradiction fixture still yields a 100% determinate score at 71% coverage, so percentage and coverage must be shown together.
 - The synthetic matrix does not establish real-world rule accuracy or measured false-positive/false-negative rates. Contradictions remain unreconciled and some evidence fields are generic.
-- CLI body deadline and SARIF schema gaps are fixed in the local proposal branch but not merged/released. Two symlink tests skipped on this Windows account; replacement races, unusual reparse points, live remote behavior, and cross-platform Unicode/resource cases still need CI verification.
-- The package tarball simulation passed locally, but no package is published and public `npx` is not available. No unaided contributor study has been completed.
+- CLI body deadline and SARIF schema gaps are fixed on the proposal branch, and the Windows junction traversal regression was fixed after CI caught it. The CLI matrix passed on Ubuntu/Windows/macOS and Node 20/22/24; one file-symlink test skipped where link creation was unavailable. Replacement races, unusual reparse points, and live remote behavior remain unverified.
+- A clean temporary checkout followed the corrected public setup, verified Core/CLI/main, exercised JSON/SARIF and strict exits, and passed five cross-repository contracts. This was a maintainer-led simulation, not a blind external participant study. No package is published and public `npx` is unavailable.
 - GitHub CLI reauthentication succeeded on 2026-10-19. Fresh repository-scoped API reads confirmed private vulnerability reporting, Dependabot alerts, Dependabot security updates, secret scanning, and push protection enabled across all three repositories; no open Dependabot alerts were returned. All three `Protect main` rulesets remain active. No settings were changed. The organization-wide ruleset listing required `admin:org`, but repo-scoped reads succeeded.
 - No measured user impact, contributor conversion, time-to-first-PR reduction, adoption, or ecosystem-specific fit is established.
 
@@ -41,13 +41,13 @@ ContribReady is a deterministic, local-first contributor-readiness auditor that 
 - `Protect main` rulesets are active: main `24795267`, Core `24795398`, CLI `24795367`. No protection changes were made.
 - License PR #2 merged in each repository; security docs PR #3 merged in Core/CLI and main report docs PR #3 merged in the main repository.
 - Seven new scoped issues are open: Core #4–6 and CLI #4–7. See [readiness review](docs/READINESS_REVIEW_20261018.md).
-- Current source/code/docs proposals remain uncommitted on isolated local audit branches. No PRs were opened.
+- Proposed changes are committed and pushed to three isolated `audit/readiness-review-20261018-*` branches. CI passed 9/9 jobs per repository. No PRs were opened, changes merged, or packages published.
 
 ## Next three actions
 
-1. Resolve the contradiction/evidence-ledger and score-coverage issue (#4 Core) with regression tests.
-2. Run the proposed branches through Node 20/22/24 on Ubuntu/Windows/macOS and perform the unaided contributor walkthrough.
-3. Decide whether to open focused PRs or apply after reviewing CI, walkthrough results, and actual Drips Program/GrantFox route fit. Publish packages only after explicit release approval.
+1. Review the CI and walkthrough record, including the main contract-suite CI limitation and unlabelled open contributor issues.
+2. Decide whether to open focused PRs for Core, CLI, and main-repository coordination/docs; if approved, merge Core before CLI and keep `main` protections intact.
+3. Independently address contradiction/evidence-ledger calibration and confirm current Drips Program/GrantFox fit. Publish packages only after explicit release approval.
 
 ## Decision
 
