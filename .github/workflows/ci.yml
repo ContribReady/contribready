@@ -30,7 +30,9 @@ jobs:
         with:
           repository: ${{ github.repository_owner }}/contribready-cli
           path: contribready-cli
-          ref: main
+          # Keep the integration PR on the reviewed CLI proposal until it lands.
+          # Switch this to main after the CLI PR merges.
+          ref: audit/readiness-review-20261018-cli
       - uses: actions/setup-node@v5
         with:
           node-version: ${{ matrix.node }}
