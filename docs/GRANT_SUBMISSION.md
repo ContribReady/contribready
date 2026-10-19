@@ -18,12 +18,12 @@ Current preparation:
 
 - All three product repositories are public under the `ContribReady` GitHub organization, use `main`, have visible cross-links, and show GitHub-detected MIT licenses.
 - Seven bounded Core/CLI issues are now open with problem/impact, reproduction steps, scope, acceptance criteria, tests, expected output, security notes, difficulty, dependencies, and out-of-scope sections. They are not yet Wave-approved or assigned complexity in a Program.
-- Core, CLI, and main integration local checks passed. Core Windows-path fix is merged; CLI PR #8's coordinated matrix is green 9/9; main integration is committed locally but still needs pushing and remote matrix validation.
+- Core's Windows-path fix is merged, and CLI plus main coordinated PR matrices passed 9/9 across Node 20/22/24 and Ubuntu/Windows/macOS, including packed-Core installation and cross-repository contracts. CLI/main PRs remain unmerged.
 - No Drips organization onboarding, repository application, Wave Program selection/approval, issue labeling, reward budget/points allocation, wallet setup, or `FUNDING.json` creation was performed.
 
 Before participating: identify an active program that genuinely fits the project, confirm the program's current criteria, onboard the organization and install the app only after maintainer review, apply only the relevant repository, wait for organizer approval, select 2–4 issues with realistic complexity and points, and establish a response/review schedule. Do not claim Drips eligibility or approval in advance. The seven open issues are not proof that applications will arrive or be reviewed promptly. Review current [points and budget rules](https://docs.drips.network/wave/maintainers/points-budgets/) before committing issue points.
 
-**Drips Wave readiness estimate: 52/100 (internal judgment, low confidence; not an official score).** Public repository structure and scoped issues are strengths. Missing program fit/approval, no completed independent contributor walkthrough, incomplete ecosystem corpus, no published packages, and no evidence of maintainer response capacity keep this below submission-ready. The score says nothing about organizer acceptance.
+**Drips Wave preparation estimate: 74/100 (internal rubric, medium-low confidence; not an official score or approval probability).** Repository clarity/docs 19/20, reproducible development and cross-platform verification 19/20, actionable issues 16/20, release/governance 13/20, and demonstrated program fit plus maintainer/contributor experience 7/20. Main/CLI PRs remain unmerged; the walkthrough was maintainer-led, program fit/approval is unknown, and response capacity is unmeasured. Keep improving before application; do not treat this as organizer acceptance odds.
 
 ## GrantFox — readiness and remaining program work
 
@@ -46,8 +46,8 @@ Do not claim approval, eligibility, proven contributor conversion, reduced time-
 - [x] Core and CLI local verify commands passed on Windows/Node 24; package tarballs installed and ran in an isolated temporary project without npm network access.
 - [x] Repository-scoped security settings were verified on 2026-10-19: private vulnerability reporting, Dependabot alerts/security updates, secret scanning, and push protection were enabled; no open Dependabot alerts were returned. See the dated readiness review. GitHub CLI authentication has since expired, so reverify after reauthentication before submission.
 - [ ] Complete human review of the 25-case synthetic matrix and pursue independently labeled external cases; fixture consistency alone does not measure false-positive/false-negative rates.
-- [x] Merge the narrow runtime-conflict detector plus Windows workflow-path normalization through protected Core PRs; CLI conflict presentation/SARIF regression tests pass on PR #8 with a 9/9 matrix. Main cross-repository contracts are locally green; remote PR #4 matrix still pending.
-- [ ] Push main integration to PR #4 and validate its cross-repository workflow on Node 20/22/24 × Ubuntu/Windows/macOS. Keep CLI/main unmerged until separately reviewed and explicitly authorized.
+- [x] Merge the narrow runtime-conflict detector plus Windows workflow-path normalization through protected Core PRs; CLI conflict presentation/SARIF regression tests pass on PR #8 with a 9/9 matrix. Main cross-repository contracts also pass in the corrected 9/9 matrix.
+- [x] Run the coordinated Core-main/CLI-proposal/main workflow on Node 20/22/24 × Ubuntu/Windows/macOS; all 9 jobs passed, including cross-repository contracts and packed-Core CLI verification. CLI and main PRs remain unmerged.
 - [x] Record the maintainer-led clean-checkout walkthrough; it is not an independent blind user study.
 - [ ] Run an independent contributor walkthrough and record comprehension and issue-discovery evidence.
 - [ ] Publish Core first and CLI second only after explicit authorization and successful release review; then verify public `npm`/`npx` install.
