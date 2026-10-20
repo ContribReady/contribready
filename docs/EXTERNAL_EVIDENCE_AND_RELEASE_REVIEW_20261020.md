@@ -60,4 +60,4 @@ Release checks completed in the isolated checkouts:
 - CLI branch: `feat/instruction-verification-output` — text/SARIF status exposure and output regression test; lockfile integrity aligned to the tested Core tarball.
 - Main branch: `docs/external-validation-release-readiness-20261020` — this report and fixture/expected-result corrections.
 
-These are local branch states only until pushed and reviewed. No PR, merge, npm publication, release, or tag is claimed by this report.
+All three branches have been pushed. Core review PR [#10](https://github.com/ContribReady/contribready-core/pull/10) is open and its Node 20/22/24 × Ubuntu/Windows/macOS CI is running; it is not merged. CLI and main PRs are intentionally sequenced after Core review because the CLI consumes the new additive Core finding contract. No merge, npm publication, release, or tag is claimed by this report.
