@@ -1,6 +1,6 @@
 # Drips Wave and GrantFox preparation
 
-**Reviewed:** 2026-10-18. This is a preparation brief, not an application, eligibility decision, or approval claim. See [the implementation/readiness review](READINESS_REVIEW_20261018.md) for current verification and blockers.
+**Reviewed:** 2026-10-20. This is a preparation brief, not an application, eligibility decision, or approval claim. See [current project state](../PROJECT_STATE.md) and the [external evidence and release review](EXTERNAL_EVIDENCE_AND_RELEASE_REVIEW_20261020.md) for current verification and blockers.
 
 ## Product statement
 
@@ -18,12 +18,12 @@ Current preparation:
 
 - All three product repositories are public under the `ContribReady` GitHub organization, use `main`, have visible cross-links, and show GitHub-detected MIT licenses.
 - No contributor issues are currently open or staged as drafts. Seven Core/CLI issue records from the earlier preparation pass were permanently deleted at maintainer direction on 2026-10-19. New tasks will be curated and added only after the relevant repository/program approval.
-- Core's Windows-path fix is merged. CLI PR #8 head `cde13b4` passed 9/9 across Node 20/22/24 and Ubuntu/Windows/macOS, including the automated offline Core+CLI tarball install and executable smoke test. Local CLI verification passed 34 tests, 2 symlink-permission skips, and package dry-run. Main PR #4 implementation head `8119979` passed its 9/9 coordinated run against CLI `cde13b4` (run 39237457143); latest docs/issue-status head `9a7e981` passed 9/9 (run 39241349426). CLI/main PRs remain unmerged.
+- Core, CLI, and main evidence/release changes are merged through protected pull requests. Their Node 20/22/24 × Ubuntu/Windows/macOS matrices passed, and both npm packages are public. A clean-cache public `npx` audit completed successfully. This proves the release path, not contributor adoption or program impact.
 - No Drips organization onboarding, repository application, Wave Program selection/approval, issue labeling, reward budget/points allocation, wallet setup, or `FUNDING.json` creation was performed.
 
 Before participating: identify an active program that genuinely fits the project, confirm the program's current criteria, onboard the organization and install the app only after maintainer review, apply only the relevant repository, wait for organizer approval, then curate 2–4 bounded issues with realistic complexity and points and establish a response/review schedule. Do not claim Drips eligibility or approval in advance. No task is currently offered to contributors. Review current [points and budget rules](https://docs.drips.network/wave/maintainers/points-budgets/) before committing issue points.
 
-**Drips Wave pre-approval preparation estimate: 59/100 (internal rubric, medium-low confidence; not an official score or approval probability).** Repository clarity/docs 19/20; reproducible development and cross-platform verification 20/20; contributor issue portfolio 0/20 (deliberately deferred until approval); release/governance 13/20; demonstrated program fit and maintainer/contributor experience 7/20. The repo-level 9/9 CI evidence is verified, but CLI/main PRs are unmerged. The walkthrough was maintainer-led, program fit/approval is unknown, and response capacity is unmeasured. This is a stage-specific preparation rubric: do not publish issues early just to increase it, and do not treat it as organizer acceptance odds.
+The earlier 59/100 preparation estimate is retired because its release and merge assumptions changed. Do not assign a replacement score until the independent contributor walkthrough, program fit, issue portfolio, and maintainer response capacity are reviewed. Package publication improves reproducibility but does not establish organizer acceptance or contributor impact.
 
 ## GrantFox — readiness and remaining program work
 
@@ -31,7 +31,7 @@ The public [GrantFox OSS GitHub App page](https://github.com/apps/grantfox-oss) 
 
 Before pursuing a GrantFox opportunity: contact GrantFox through its current official channel and ask for the exact program/application route, eligible deliverables, budget rules, review process, and whether general-purpose contributor tooling is in scope. Present ContribReady's cross-ecosystem use honestly and propose a Stellar-specific deliverable only if a real user need and maintainer commitment are established. Do not claim affiliation, approval, impact, or ecosystem fit without evidence.
 
-**GrantFox readiness estimate: 38/100 (internal judgment, low confidence; not an official score).** Public repositories and concrete contributor backlog help, but the formal submission route and fit are unverified, packages are unpublished, the external contributor test is incomplete, and measurable impact is absent. This is a research/contact stage, not application-ready.
+The earlier 38/100 GrantFox estimate is retired. Package publication removes one delivery blocker, but the formal submission route, ecosystem fit, independent contributor evidence, and measurable impact remain unverified. This is still a research/contact stage, not application-ready.
 
 ## Shared claims to avoid
 
@@ -43,14 +43,14 @@ Do not claim approval, eligibility, proven contributor conversion, reduced time-
 - [x] Complete MIT license on main and GitHub license detection reports MIT.
 - [ ] After repository/program approval, curate and publish only the issues selected for that Program; no contributor issues are currently open.
 - [x] `Protect main` rulesets active on all repositories; no protection setting was changed in this review.
-- [x] Core and CLI local verify commands passed on Windows/Node 24; package tarballs installed and ran in an isolated temporary project without npm network access.
-- [x] Repository-scoped security settings were verified on 2026-10-19: private vulnerability reporting, Dependabot alerts/security updates, secret scanning, and push protection were enabled; no open Dependabot alerts were returned. See the dated readiness review. GitHub CLI authentication has since expired, so reverify after reauthentication before submission.
+- [x] Core and CLI are public on npm; local tarballs and a fresh-cache public `npx` installation both ran successfully.
+- [x] Repository-scoped security settings were verified on 2026-10-19: private vulnerability reporting, Dependabot alerts/security updates, secret scanning, and push protection were enabled; no open Dependabot alerts were returned. Re-read these mutable settings immediately before submission rather than treating the dated result as permanent.
 - [ ] Complete human review of the 25-case synthetic matrix and pursue independently labeled external cases; fixture consistency alone does not measure false-positive/false-negative rates.
-- [x] Merge the narrow runtime-conflict detector plus Windows workflow-path normalization through protected Core PRs; CLI conflict presentation/SARIF regression tests pass on PR #8 with a 9/9 matrix. Main cross-repository contracts also pass in the corrected 9/9 matrix.
-- [x] Run the coordinated Core-main/CLI-proposal/main workflow on Node 20/22/24 × Ubuntu/Windows/macOS; all 9 jobs passed on the latest reviewed CLI head, including cross-repository contracts and packed-Core CLI verification. CLI and main PRs remain unmerged.
+- [x] Merge the runtime-conflict, instruction-status, bounded-response, SARIF, and release-readiness changes through protected Core, CLI, and main pull requests.
+- [x] Run the coordinated Core/CLI/main workflow on Node 20/22/24 × Ubuntu/Windows/macOS; all 9 cells passed, including cross-repository contracts and packed-Core CLI verification.
 - [x] Record the maintainer-led clean-checkout walkthrough; it is not an independent blind user study.
 - [ ] Run an independent contributor walkthrough and record comprehension and issue-discovery evidence.
-- [ ] Publish Core first and CLI second only after explicit authorization and successful release review; then verify public `npm`/`npx` install.
+- [x] Publish Core first and CLI second after explicit authorization and successful release review; verify public `npm` metadata and a fresh-cache `npx` audit.
 - [ ] Verify a real active Drips Wave Program fit and organizer approval before describing participation.
 - [ ] Obtain GrantFox's actual application route and documented eligibility/fit before preparing a funding application.
 - [ ] Gather measured user/impact evidence before stating outcomes.

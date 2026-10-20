@@ -1,16 +1,16 @@
 # Compatibility Matrix
 
-The configured v0.1 support target is Node.js 20, 22, and 24 on Ubuntu, Windows, and macOS. This is a target/configured CI matrix, **not evidence that all cells were run for the 2026-10-18 proposed audit branches**. This review locally verified Windows/Node 24 only.
+The v0.1 support target is Node.js 20, 22, and 24 on Ubuntu, Windows, and macOS. The release and integration pull requests completed all nine operating-system/runtime cells before merge on 2026-10-20.
 
 | Component | Node.js | Operating systems | Verification |
 |---|---|---|---|
-| `@contribready/core` | 20, 22, 24 | Ubuntu, Windows, macOS | Configured workflow: `npm run verify`, package dry-run; local review run: Windows/24 |
-| `@contribready/cli` | 20, 22, 24 | Ubuntu, Windows, macOS | Configured workflow: local Core tarball + `npm run verify`; local review run: Windows/24 |
-| `contribready` main harness | 20, 22, 24 | Ubuntu, Windows, macOS | Configured workflow: `npm run verify` fixture gate; cross-package contract run is local-only |
+| `@contribready/core` | 20, 22, 24 | Ubuntu, Windows, macOS | All 9 cells: `npm run verify` and package dry-run passed |
+| `@contribready/cli` | 20, 22, 24 | Ubuntu, Windows, macOS | All 9 cells: packed Core install, `npm run verify`, package smoke, and SARIF validation passed |
+| `contribready` main harness | 20, 22, 24 | Ubuntu, Windows, macOS | All 9 cells: fixtures plus five cross-repository contracts passed |
 
 Node 20 is the minimum v0.1 runtime because the CLI uses built-in Fetch, `AbortController`, `TextDecoder`, and modern ESM behavior. Node 22 and 24 are compatibility lanes. TypeScript is a development dependency; published Core and CLI artifacts contain compiled JavaScript and declarations.
 
-Each repository has its own lockfile, CI workflow, build/typecheck/test/packaging commands, and release ownership. Core is released before CLI when its API changes. Before publication, CLI CI checks out Core, verifies it, packs it, and installs the local tarball for CLI verification; this tests the package boundary without relying on a registry release. After publication, consumers use the declared Core version from the package registry. The main repository's cross-package contract suite is a local workspace integration gate and does not create a parent repository or merge release ownership.
+Each repository has its own lockfile, CI workflow, build/typecheck/test/packaging commands, and release ownership. Core is released before CLI when its API changes. CLI CI checks out Core, verifies it, packs it, and installs the local tarball to test unreleased package-boundary changes; released consumers use the declared Core version from npm. The main repository's cross-package contract suite is a workspace integration gate and does not create a parent repository or merge release ownership.
 
 For all three repositories, the platform smoke check is:
 

@@ -1,5 +1,7 @@
 # Clean-checkout contributor walkthrough
 
+> **Historical snapshot — 2026-10-19.** This record intentionally describes the pre-publication walkthrough state. Use [current project state](../PROJECT_STATE.md) for current package and pull-request status.
+
 **Date:** 2026-10-19  
 **Scope:** Review branches only; no PRs, merges, releases, or package publications.  
 **Environment:** Fresh Windows temporary directory, Node.js 24, public GitHub checkouts.
