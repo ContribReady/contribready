@@ -1,5 +1,7 @@
 # ContribReady source, security, release, and submission review
 
+> **Historical snapshot — 2026-10-18/19.** This document preserves the evidence available during that review. Its package, pull-request, and readiness statuses are superseded by [current project state](../PROJECT_STATE.md) and the [2026-10-20 external evidence and release review](EXTERNAL_EVIDENCE_AND_RELEASE_REVIEW_20261020.md).
+
 **Review date:** 2026-10-18–19; integration follow-up 2026-10-19 (Africa/Lagos)
 **Recommendation:** improve before submission  
 **Confidence:** medium for the stated implementation and CI results; low for real-world rule accuracy, external contributor experience, and program fit.

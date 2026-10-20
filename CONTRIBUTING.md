@@ -4,7 +4,7 @@ This is the ContribReady project source-of-truth repository. Change product dire
 
 ## Local setup
 
-Use Node.js 20, 22, or 24. The project has three repositories, and the CLI package depends on the unpublished Core package. From a common parent directory, clone all three repositories, then follow this order:
+Use Node.js 20, 22, or 24. Clone the three repositories into a common parent directory, then verify them in dependency order:
 
 ```bash
 git clone https://github.com/ContribReady/contribready.git
@@ -12,15 +12,14 @@ git clone https://github.com/ContribReady/contribready-core.git
 git clone https://github.com/ContribReady/contribready-cli.git
 npm ci --prefix contribready-core
 npm run verify --prefix contribready-core
-npm pack ./contribready-core --pack-destination .
-npm install --prefix contribready-cli --no-save --package-lock=false --ignore-scripts --no-audit --no-fund ./contribready-core-0.1.0.tgz
+npm ci --prefix contribready-cli
 npm run verify --prefix contribready-cli
 npm ci --prefix contribready
 npm run verify --prefix contribready
 npm run test:contracts --prefix contribready
 ```
 
-The tarball step supplies the unpublished Core dependency without relying on a sibling-source link; `--ignore-scripts` prevents dependency lifecycle scripts from running during this setup. Core builds before CLI. The main contract tests expect the three checkout directories to be siblings. The main repository's default fixture verification is offline and reads only its synthetic fixture corpus.
+Core and CLI `0.1.0` are public npm packages, so CLI's lockfile resolves the released Core package during normal contributor setup. Coordinated CI additionally packs Core and installs that tarball into CLI to test unreleased cross-repository changes without a sibling-source import. Core still verifies before CLI. The main contract tests expect the three checkout directories to be siblings. The main repository's default fixture verification is offline and reads only its synthetic fixture corpus.
 
 ## Change and pull-request workflow
 

@@ -2,7 +2,7 @@
 
 This folder contains the product-level documentation for the ContribReady repository. Start from the main [README](../README.md) when you need the product overview.
 
-For the current source-level, security, packaging, and submission decision, start with the [2026-10-18 readiness review](READINESS_REVIEW_20261018.md), the [2026-10-19 clean-checkout contributor walkthrough](CONTRIBUTOR_WALKTHROUGH_20261019.md), and the [2026-10-20 external evidence and release review](EXTERNAL_EVIDENCE_AND_RELEASE_REVIEW_20261020.md). Older phase/audit reports are historical artifacts and are not current proof of readiness.
+For current source, security, package, and submission status, start with [PROJECT_STATE.md](../PROJECT_STATE.md) and the [2026-10-20 external evidence and release review](EXTERNAL_EVIDENCE_AND_RELEASE_REVIEW_20261020.md). The 2026-10-18 readiness review, 2026-10-19 walkthrough, and earlier audit reports are explicitly marked historical and are not current proof of readiness.
 
 ## Find your way
 
