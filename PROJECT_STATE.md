@@ -1,8 +1,17 @@
 # Project State
 
 **Updated:** 2026-10-19
-**Current work:** release-candidate package test and cross-repository evidence integration; Core fix merged, CLI and main proposal matrices green (latest main branch update run 39241349426), contributor-issue publication deferred until approval
-**Submission status:** improve before Drips Wave; defer GrantFox application pending verified route/fit
+**Current work:** public v0.1 package verification and bounded external-evidence calibration; Core and CLI changes merged, public packages verified, main report/fixture PR pending final matrix
+**Submission status:** improve then submit to Drips Wave after final main-PR verification and contributor-issue selection; defer GrantFox application pending verified route/fit
+
+## Release update — 2026-10-20
+
+- `@contribready/core@0.1.0` and `@contribready/cli@0.1.0` are public on npm. Core was published first.
+- A fresh-directory, isolated-cache `npx --yes @contribready/cli@0.1.0 audit ... --format json` run installed from the public registry and completed successfully.
+- Core PRs #10/#11 and CLI PRs #9/#10/#11 merged through the active protected-branch workflow after their required matrices passed.
+- Setup/test findings now separate documented evidence, bounded static metadata consistency, and `execution: not-run`. This does not certify that target-repository commands work.
+- Five pinned public-repository evidence snapshots informed rule calibration. The sample remains bounded and is not a statistical validation or impact study.
+- Main PR #5 remains the final integration/report gate; older status entries below are retained as dated review history.
 
 ## Product
 

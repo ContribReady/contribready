@@ -26,8 +26,8 @@ It audits documented evidence—setup, testing, contribution workflow, support/s
 | If you want to… | Start with… |
 |---|---|
 | Understand the product and architecture | [Documentation map](docs/README.md) · [Architecture](docs/ARCHITECTURE.md) · [Requirements](docs/REQUIREMENTS.md) |
-| Run the CLI | [CLI repository](https://github.com/ContribReady/contribready-cli) · use the published CLI after release |
-| Understand the analysis engine | [Core repository](https://github.com/ContribReady/contribready-core) · use the published package after release |
+| Run the CLI | `npx --yes @contribready/cli audit .` · [CLI repository](https://github.com/ContribReady/contribready-cli) |
+| Understand the analysis engine | [`@contribready/core`](https://www.npmjs.com/package/@contribready/core) · [Core repository](https://github.com/ContribReady/contribready-core) |
 | Review safety boundaries | [Security threat model](docs/SECURITY_THREAT_MODEL.md) |
 | See how results are tested | [Fixture catalog](docs/FIXTURE_CATALOG.md) · [Contract tests](tests/contract.test.mjs) |
 | Contribute or propose funded work | [Contributing](CONTRIBUTING.md) · [Grant submission guide](docs/GRANT_SUBMISSION.md) |
@@ -66,7 +66,7 @@ For the exact ownership boundaries and local layout, see [docs/REPOSITORY_MAP.md
 
 ## Status
 
-The 2026-10-18/19 source review found that earlier “phase complete” labels overstated verification. Existing remote PR heads passed Node 20/22/24 × Ubuntu/Windows/macOS; maintainer-led clean-checkout walkthrough passed, but it was not an independent blind study. On 2026-10-20, bounded evidence from five pinned public repositories was used to calibrate rules, and setup/test findings gained an explicit `documented` / static metadata `consistent|conflicting|not-assessed` / `execution: not-run` distinction. Core, CLI-from-packed-Core, and main contract verification pass locally on isolated branches; those changes are not merged. npm authentication returned `E401`, so neither package is published and the proposed `npx --yes @contribready/cli audit .` command is not yet available from the public registry. Real-world calibration remains limited and no impact or package adoption is claimed. See the [external evidence and release review](docs/EXTERNAL_EVIDENCE_AND_RELEASE_REVIEW_20261020.md), [current readiness review](docs/READINESS_REVIEW_20261018.md), and [walkthrough record](docs/CONTRIBUTOR_WALKTHROUGH_20261019.md); [FINAL_AUDIT.md](FINAL_AUDIT.md) is a historical v0.1 audit.
+The 2026-10-18/19 source review found that earlier “phase complete” labels overstated verification. A maintainer-led clean-checkout walkthrough passed, but it was not an independent blind study. On 2026-10-20, bounded evidence from five pinned public repositories was used to calibrate rules, and setup/test findings gained an explicit `documented` / static metadata `consistent|conflicting|not-assessed` / `execution: not-run` distinction. The Core and CLI changes passed Node 20/22/24 × Ubuntu/Windows/macOS and were merged through protected pull requests. `@contribready/core@0.1.0` and `@contribready/cli@0.1.0` are public on npm; a fresh-cache `npx --yes @contribready/cli@0.1.0 audit ... --format json` run installed from the registry and completed successfully. Real-world calibration remains bounded and no impact, adoption, or objective contributor-friendliness claim is made. See the [external evidence and release review](docs/EXTERNAL_EVIDENCE_AND_RELEASE_REVIEW_20261020.md), [current readiness review](docs/READINESS_REVIEW_20261018.md), and [walkthrough record](docs/CONTRIBUTOR_WALKTHROUGH_20261019.md); [FINAL_AUDIT.md](FINAL_AUDIT.md) is a historical v0.1 audit.
 
 ## License
 

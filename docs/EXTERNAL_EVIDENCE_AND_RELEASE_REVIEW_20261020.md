@@ -2,7 +2,7 @@
 
 ## Status
 
-This review executes the first three external-readiness actions: bounded evaluation against real public repositories, separating documented instructions from static consistency and execution status, and preparing the package release path. The product changes are on isolated audit branches and are not merged. The npm packages were **not published**: npm returned `E401 Unauthorized` for `npm whoami`. Publication is not reported as complete.
+This review completed the first three external-readiness actions: bounded evaluation against real public repositories, separating documented instructions from static consistency and execution status, and proving the public package release path. The Core and CLI changes were merged through protected pull requests. `@contribready/core@0.1.0` and `@contribready/cli@0.1.0` are public on npm, and the one-command CLI route was verified from a fresh directory and isolated npm cache.
 
 ## External-repository evaluation
 
@@ -30,29 +30,31 @@ Consequently, a `pass` for a setup/test rule means only that the documented evid
 
 ## Package and one-command release path
 
-The intended post-publication command is:
+The verified public command is:
 
 ```sh
 npx --yes @contribready/cli audit .
 ```
 
-The CLI package declares `@contribready/core` as a normal versioned dependency, so the registry install should retrieve Core automatically. A local tarball-based consumer test verifies both packed packages can be installed without sibling checkouts and that the installed executable runs. This is a package simulation only; it does not prove public registry availability.
+The CLI package declares `@contribready/core` as a normal versioned dependency, so the registry install retrieves Core automatically. Both a local tarball consumer test and a public-registry `npx` test verified execution without a sibling source checkout.
 
 Release checks completed in the isolated checkouts:
 
 - Core `npm run verify`: passed, 19 tests; `npm pack --dry-run` passed.
-- CLI `npm run verify`: passed, 36 tests, 2 symlink tests skipped because symlink creation is unavailable on this account; SARIF schema tests passed.
+- CLI `npm run verify`: passed, 37 tests, 1 file-symlink test skipped because link creation is unavailable on this account; SARIF schema tests passed.
 - CLI `npm run test:package`: passed, 1 isolated install/run test using the packed CLI and packed Core tarballs.
 - Main fixture verification and cross-repository contract suite: passed, 1 fixture-catalog test and 5 contract tests.
-- Current Core tarball integrity: `sha512-QlAHNSGXDd2fHMtXM8VE45I0cKqxTSrvKxg8AQiZUs3JfoJFq5wepRuMjErKqikDaLw2VXlOt3xCNZpXpCwqkQ==`. The CLI lockfile pin was updated to this exact artifact integrity while retaining the canonical npm registry URL.
-- No public npm tarball or registry installation was verified.
+- Published Core integrity: `sha512-Ntj1jn/+045GguJSjC4y/XHrEGJBH55E4alDhwXwm9P+WMTZ6O6F1ScdQuCXqECIsruto/TimZluuMNnWd5ImA==`.
+- Published CLI integrity: `sha512-+jzwOasdSPsRGjErDaRDGvbxbmlJ7e2lQk1cRqCBQw7faOGWjx2FYJ1OpBWPyw4mMBfekFo985Lqezu7+Xtn5A==`.
+- CLI PR #11 refreshed its lockfile to the published Core integrity; the full nine-job matrix passed before merge.
+- A fresh-directory, isolated-cache `npx --yes @contribready/cli@0.1.0 audit <repository> --format json` run returned CLI `0.1.0`, schema version 2 output, 14 findings, and `instructionVerification.execution: not-run` without using a local Core or CLI checkout.
 
 ## Remaining gates
 
-1. Reauthenticate npm with an account authorized to publish the `@contribready` scope. The account check returned `E401`; no credential was read or displayed.
-2. Review CLI PR #9 and merge it only through the protected-branch PR process; rerun main PR #5's matrix after the CLI default branch contains the matching regression test. Then review/merge the main documentation/fixture PR through its normal protected workflow. No direct main push or merge was performed.
-3. Rebuild and pack the merged Core, publish it first, verify the public registry tarball and a clean consumer install, then build/pack/publish CLI and verify `npx --yes @contribready/cli audit .` from a clean directory.
-4. Keep the one-command route described as planned until those public-registry checks pass. Do not claim command correctness; ContribReady intentionally does not execute commands found in target repositories.
+1. Merge this main-repository report/fixture PR only after its matrix passes against the merged Core and CLI default branches.
+2. Continue independent calibration beyond the five bounded public snapshots; this review is not a statistical validation or impact study.
+3. Maintain Core-before-CLI release order for future versions and refresh CLI's lockfile after each final Core tarball is published.
+4. Keep instruction claims bounded: the public CLI installation was executed, but commands found inside audited target repositories remain intentionally unexecuted.
 
 ## Changes prepared in this review
 
@@ -60,4 +62,4 @@ Release checks completed in the isolated checkouts:
 - CLI branch: `feat/instruction-verification-output` — text/SARIF status exposure and output regression test; lockfile integrity aligned to the tested Core tarball.
 - Main branch: `docs/external-validation-release-readiness-20261020` — this report and fixture/expected-result corrections.
 
-All three branches have been pushed. Core PR [#10](https://github.com/ContribReady/contribready-core/pull/10) was reviewed and merged after all nine Node 20/22/24 × Ubuntu/Windows/macOS jobs passed. CLI PR [#9](https://github.com/ContribReady/contribready-cli/pull/9) is open; all nine jobs in its fresh matrix passed against merged Core `main`, and it remains pending review. Main PR [#5](https://github.com/ContribReady/contribready/pull/5) is open, but its current CI run fails in the old CLI `main` test `hostile Unicode, percent, and spacing in filenames stay inert and SARIF-encoded`: that assertion expects a generic `docs/guide` file to be contributor evidence. CLI PR #9 changes the test input to a contributor guide and its matrix passes. Main CI should be rerun after CLI review/merge; until then, main PR #5 is not green. No npm publication, release, or tag is claimed by this report.
+Core PR [#10](https://github.com/ContribReady/contribready-core/pull/10) and CLI PR [#9](https://github.com/ContribReady/contribready-cli/pull/9) merged the evidence-quality contract after protected cross-platform matrices passed. Core PR [#11](https://github.com/ContribReady/contribready-core/pull/11) and CLI PR [#10](https://github.com/ContribReady/contribready-cli/pull/10) merged explicit npm release metadata and public installation documentation. CLI PR [#11](https://github.com/ContribReady/contribready-cli/pull/11) merged the final published-Core lockfile integrity after another full matrix passed. Main PR [#5](https://github.com/ContribReady/contribready/pull/5) contains this review and the calibrated fixture updates; it must pass against the merged default branches before merge. No GitHub release or adoption claim is made.
