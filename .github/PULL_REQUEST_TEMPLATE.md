@@ -1,18 +1,37 @@
+<!-- Use real Markdown line breaks. Do not paste escaped \n text. -->
+
 ## Summary
 
-Describe the user, maintainer, or contributor problem this change addresses.
+<!-- Describe the user-visible or maintainer-visible outcome in 2–4 bullets. -->
 
-## Scope
-
-- [ ] Main product/documentation/source-of-truth change
-- [ ] Cross-repository contract change
-- [ ] Fixture or audit change
-- [ ] Release or security change
+- <!-- summary item -->
 
 ## Verification
 
-- Commands run:
-- Result:
+<!-- List the exact checks run and their results. Do not claim checks that were not run. -->
+
+- [ ] Documentation and fixture validation
+- [ ] Contract and cross-repository compatibility checks
+- [ ] `git diff --check`
+
+## Security and compatibility
+
+<!-- Explain any security-boundary, contract, version, or release-order impact. Write "None" when not applicable. -->
+
+- Security impact:
+- Compatibility impact:
+
+## Documentation
+
+<!-- Link updated documentation, or explain why no documentation change is needed. -->
+
+- <!-- documentation link or reason not required -->
+
+## Scope
+
+<!-- State important exclusions and any separately tracked follow-up work. -->
+
+- <!-- exclusion or follow-up -->
 
 ## Review checklist
 
