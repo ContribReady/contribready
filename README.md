@@ -29,8 +29,29 @@ It audits documented evidence—setup, testing, contribution workflow, support/s
 | Run the CLI | `npx --yes @contribready/cli audit .` · [CLI repository](https://github.com/ContribReady/contribready-cli) |
 | Understand the analysis engine | [`@contribready/core`](https://www.npmjs.com/package/@contribready/core) · [Core repository](https://github.com/ContribReady/contribready-core) |
 | Review safety boundaries | [Security threat model](docs/SECURITY_THREAT_MODEL.md) |
-| See how results are tested | [Fixture catalog](docs/FIXTURE_CATALOG.md) · [Contract tests](tests/contract.test.mjs) |
+| Review evaluation evidence and limits | [External evidence review](docs/EXTERNAL_EVIDENCE_AND_RELEASE_REVIEW_20261020.md) · [Fixture catalog](docs/FIXTURE_CATALOG.md) · [Scoring contract](docs/SCORING.md) |
+| See how results are tested | [Contract tests](tests/contract.test.mjs) · [Expected evaluation outputs](fixtures/evaluation-matrix.expected.json) |
 | Contribute or propose funded work | [Contributing](CONTRIBUTING.md) · [Grant submission guide](docs/GRANT_SUBMISSION.md) |
+
+## Evaluation evidence and limits
+
+ContribReady's claims are bounded by evidence that a reviewer can inspect and reproduce:
+
+| Evidence | What it establishes | What it does not establish |
+|---|---|---|
+| [Five pinned public-repository snapshots](docs/EXTERNAL_EVIDENCE_AND_RELEASE_REVIEW_20261020.md#external-repository-evaluation) | Real repository evidence exposed false-positive risks and informed narrower source selection and `unknown` outcomes. | A statistically representative benchmark, independently labeled precision/recall result, or proof of contributor impact. |
+| [25-case synthetic evaluation matrix](fixtures/evaluation-matrix.json) and [reviewed expected outputs](fixtures/evaluation-matrix.expected.json) | Stable findings, scores, coverage, recommendations, exit status, JSON, text, and SARIF behavior across documented scenarios. | Independent validation: the cases and expectations are maintained by this project. |
+| [Scoring contract](docs/SCORING.md) and [rule catalog](docs/RULE_CATALOG.md) | Versioned deterministic scoring, explicit `unknown` and `not-applicable` handling, and explainable rule behavior. | An objective contributor-friendliness score or a prediction that a contributor will succeed. |
+| [Clean-checkout walkthrough](docs/CONTRIBUTOR_WALKTHROUGH_20261019.md) | A maintainer could follow the public setup and verification path from a clean checkout. | A blind external usability study or measured time-to-first-contribution improvement. |
+| Public [`@contribready/core`](https://www.npmjs.com/package/@contribready/core) and [`@contribready/cli`](https://www.npmjs.com/package/@contribready/cli) packages | The published release path and one-command CLI installation are available for independent use. | Package adoption, recommendation effectiveness, or maintainer-response quality. |
+
+Try the published CLI without cloning these repositories:
+
+```bash
+npx --yes @contribready/cli@0.1.0 audit . --format json
+```
+
+The result means only **the output produced by the documented ContribReady rules against the available evidence**. ContribReady does not execute target instructions during an audit, and the current corpus does not support a numeric precision/recall or contributor-outcome claim. See the [fixture catalog's false-positive/false-negative review](docs/FIXTURE_CATALOG.md#false-positivenegative-review) and [current project state](PROJECT_STATE.md) for the remaining evidence gaps.
 
 ## The repository family
 
